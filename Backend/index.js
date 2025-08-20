@@ -4,6 +4,8 @@ import express from "express"
 import mongoose from "mongoose"
 import authRoute from "./Routes/authRoute.js"
 import cookieParser from "cookie-parser"
+import cors from "cors"
+
 
 const app = express()
 app.use(express.json())
@@ -13,22 +15,27 @@ app.use(cookieParser())
 const port = process.env.PORT || 8000
 const atlasUrl = process.env.ATLAS_URL
 
-app.listen(port,()=>{
-    console.log(`app is running on port ${port}`)
-})
 
 const main = async ()=>{
     await mongoose.connect(atlasUrl)
 }
 
-main()
-.then(()=>{
+app.use(cors({
+    origin : "http://localhost:5173",
+    credentials : true
+}))
+
+app.listen(port,()=>{
+    console.log(`app is running on port ${port}`)
+    main()
+    .then(()=>{
     console.log("Connected to DB")
-})
-.catch((err)=>{
+    })
+    .catch((err)=>{
     console.log(`FAiled to connect with DB`,err)
 })
+})
 
 
 
-app.use("/",authRoute)
+app.use("/api/auth",authRoute)
