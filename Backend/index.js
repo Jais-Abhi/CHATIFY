@@ -5,7 +5,7 @@ import mongoose from "mongoose"
 import authRoute from "./Routes/authRoute.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
-
+import userRoute from "./Routes/userRoute.js"
 
 const app = express()
 app.use(express.json())
@@ -39,3 +39,4 @@ app.listen(port,()=>{
 
 
 app.use("/api/auth",authRoute)
+app.use("/api/user",userRoute)

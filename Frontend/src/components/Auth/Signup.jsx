@@ -59,9 +59,8 @@ const Signup = () => {
            required onChange={(e)=>setemail(e.target.value)} value={email} />
 
           <div className=' w-4/5 relative ' >
-            <input minlength="6"  className=' px-4 py-2 w-full border-[rgb(170,58,201)] border-2 rounded-[20px]' type={show ? "text" : "password"} name="password" placeholder='password'  onChange={(e)=>setpassword(e.target.value)} value={password}
-            onInvalid={(e) => e.target.setCustomValidity("password must be at least 6 characters long")} 
-            onInput={(e) => e.target.setCustomValidity("")}   />
+            <input required minLength="6"  className=' px-4 py-2 w-full border-[rgb(170,58,201)] border-2 rounded-[20px]' type={show ? "text" : "password"} name="password" placeholder='password'  onChange={(e)=>setpassword(e.target.value)} value={password}
+              />
 
             <span className=' absolute right-4 mt-[0.5rem] cursor-pointer font-medium text-[rgb(170,58,201)]' onClick={()=>setShow(!show)} > {show ? "hide" : "show"} </span>
           </div>

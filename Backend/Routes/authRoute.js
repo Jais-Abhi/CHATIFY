@@ -1,5 +1,5 @@
 import express from "express"
-import {signupController,loginController} from "../Controllers/authController.js"
+import {signupController,loginController,logoutController} from "../Controllers/authController.js"
 import User from "../models/userModel.js"
 
 const authRoute = express.Router()
@@ -9,5 +9,6 @@ const authRoute = express.Router()
 // })
 authRoute.post("/signup",signupController)
 authRoute.post("/login",loginController)
+authRoute.get("/logout",logoutController)
 
 export default authRoute

@@ -39,7 +39,7 @@ try {
         secure:false,
         maxAge :7*24*60*60*1000
     })
-    res.status(201).json({userData})
+    return res.status(201).json({userData})
 
 } catch (err) {
     res.status(400).json({message : "signup fail"})
@@ -72,16 +72,29 @@ const loginController = async(req,res)=>{
         })
         console.log(req.cookies)
         console.log(user)
-        res.status(201).json(user)
+        return res.status(201).json(user)
 
     } catch (err) {
         console.log("error in login",err)
-        res.status(402).json({message : "somthing wrong while logging in"})
+        return res.status(402).json({message : "somthing wrong while logging in"})
     }
 }
 
 
+
+//logoutController 
+
+const logoutController = (req,res)=>{
+    try {
+    res.clearCookie("token")
+    return res.status(402).json({message : "logOut succesfull"})
+    } catch (err) {
+        return res.status(402).json({message : "error while logout"})
+    }
+}
+
 export  {
     signupController,
-    loginController
+    loginController,
+    logoutController
 }
