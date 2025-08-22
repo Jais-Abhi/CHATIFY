@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { serverUrl } from '../../main.jsx'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +8,6 @@ import getCurrentUser from '../../Hooks/getCurrentUser.js'
 
 
 const Login = () => {
-
 
   const [show , setShow] = useState(false)
   const [email , setemail] = useState("")
@@ -20,9 +19,6 @@ const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-        useEffect(()=>{
-        console.log("userData",userData)
-      },[userData])
 
 
   const submitHandler = async (e)=>{
@@ -39,6 +35,7 @@ const Login = () => {
       setpassword("")
       setloading(false)
       setError("")
+      
 
   } catch (err) {
     console.log(err)
@@ -85,6 +82,8 @@ const Login = () => {
 
           <button type="submit" className=' disabled:bg-[rgb(162,122,173)] mt-8 px-4 py-2 w-2/5 text-[1.3rem] font-semibold text-white  bg-[rgb(170,58,201)] rounded-[25px]' 
           required disabled = {loading}  > {loading? "loading....": "login"} </button>
+          <button onClick={()=>navigate("/")} className=' disabled:bg-[rgb(162,122,173)] mt-8 px-4 py-2 w-2/5 text-[1.3rem] font-semibold text-white  bg-[rgb(170,58,201)] rounded-[25px]' 
+          required disabled = {loading}  > {loading? "loading....": "home"} </button>
          
         </form>
         <p onClick={()=>navigate("/signup")} className=' mt-[20px] text-[1.1rem] font-medium cursor-pointer'  >Create a new account ? <span className='text-blue-800' >signup</span></p>
