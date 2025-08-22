@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import { serverUrl } from '../../main.jsx'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserData } from '../../Redux/Slices/userSlice.js'
+import getCurrentUser from '../../Hooks/getCurrentUser.js'
+
 
 const Login = () => {
+
 
   const [show , setShow] = useState(false)
   const [email , setemail] = useState("")
@@ -11,16 +16,25 @@ const Login = () => {
   const [loading,setloading]= useState(false)
   const [error,setError]= useState("")
 
-
+  const userData = useSelector((state)=>state.user.userData)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+
+        useEffect(()=>{
+        console.log("userData",userData)
+      },[userData])
+
 
   const submitHandler = async (e)=>{
     e.preventDefault()
+
+
     try {
       setloading(true)
       const result = await axios.post(`${serverUrl}/api/auth/login`,
         {email,password} , {withCredentials:true} )
-      // console.log(result)
+        
+      dispatch(setUserData(result.data))
       setemail("")
       setpassword("")
       setloading(false)
@@ -45,7 +59,7 @@ const Login = () => {
 
   return (
     <div className='w-full h-screen bg-slate-300 flex justify-center items-center' >
-      <div className=' h-screen w-full  md:h-[550px] md:w-[500px] bg-blue-200 md:rounded-[30px] '>
+      <div className=' h-screen w-full  md:h-[580px] md:w-[500px] bg-blue-200 md:rounded-[30px] '>
         <div className='h-[150px] flex justify-center items-center bg-[rgb(170,58,201)] md:rounded-t-[30px]' >
         <p className='text-2xl font-bold text-gray-300' >Login on <span className='text-white' >Chatify</span> </p>
         </div>
@@ -57,7 +71,7 @@ const Login = () => {
 
           <div className=' w-4/5 relative mt-8' >
             <input 
-            minlength="6" required className=' px-4 py-2 w-full border-[rgb(170,58,201)] border-2 rounded-[20px]' 
+            minLength="6" required className=' px-4 py-2 w-full border-[rgb(170,58,201)] border-2 rounded-[20px]' 
             type={show ? "text" : "password"} name="password" placeholder='password'  
             onChange={(e)=>setpassword(e.target.value)} value={password}
             onInvalid={(e) => e.target.setCustomValidity("password must be at least 6 characters long")} 

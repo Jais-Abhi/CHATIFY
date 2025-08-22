@@ -15,6 +15,7 @@ const isAuth = async(req,res,next)=>{
 
     } catch (error) {
         console.log(`error while getting token userId ${error}`)
+        return res.status(400).json({message : "error while getting token userI"})
     }
 }
 

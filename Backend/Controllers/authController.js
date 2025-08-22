@@ -35,7 +35,7 @@ try {
 
     res.cookie("token",token,{
         httpOnly :true,
-        sameSite :"none",
+        sameSite :"strict",
         secure:false,
         maxAge :7*24*60*60*1000
     })
@@ -68,7 +68,7 @@ const loginController = async(req,res)=>{
             httpOnly:true,
             maxAge : 7*24*60*60*1000,
             secure : false,
-            sameSite : "lax"
+            sameSite : "strict"
         })
         console.log(req.cookies)
         console.log(user)
@@ -76,7 +76,7 @@ const loginController = async(req,res)=>{
 
     } catch (err) {
         console.log("error in login",err)
-        return res.status(402).json({message : "somthing wrong while logging in"})
+        return res.status(402).json({message : "something wrong while logging in"})
     }
 }
 

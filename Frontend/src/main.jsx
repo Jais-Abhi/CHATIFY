@@ -6,27 +6,43 @@ import {RouterProvider} from "react-router/dom"
 import App from './App.jsx'
 import Signup from './components/Auth/Signup.jsx';
 import Login from './components/Auth/Login.jsx';
+import {Provider} from "react-redux"
+import store from './Redux/Stores/store.js';
+import Home from './components/home.jsx';
+
 export const serverUrl = "http://localhost:5000"
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    Component : App,
-  },
-  {
-      path : "signup",
-      Component : Signup
+    element : <App/>,
+    children :
+    [{
+      index :true,
+      element : <Home/>
     },
-    {
+      {
+      path : "signup",
+      element : <Signup/>
+      },
+      {
       path : "login",
-      Component : Login
-    }
+      element : <Login/>
+      }
+    ]
+  },
+  
 ])
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />  
+    <Provider store={store} >
+      <RouterProvider router={router} /> 
+    </Provider>
+ 
+
+    
   </StrictMode>,
 )

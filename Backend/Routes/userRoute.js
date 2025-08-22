@@ -4,5 +4,5 @@ import getCurrentUser from "../Controllers/getCurrentUser.js"
 const userRoute = express.Router()
 
 
-userRoute.get("/data",isAuth,getCurrentUser)
+userRoute.get("/current",isAuth,getCurrentUser)
 export default userRoute

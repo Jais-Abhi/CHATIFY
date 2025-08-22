@@ -1,12 +1,12 @@
 import React from 'react'
-import { useNavigate } from 'react-router'
-import Signup from './components/Auth/Signup'
+import { Outlet, useNavigate } from 'react-router'
+import getCurrentUser from './Hooks/getCurrentUser.js'
 const App = () => {
-  const navigate = useNavigate()
+  getCurrentUser()
+
   return (
   <>
-  <h1 className='text-3xl font-bold underline' >hello</h1>
-    <button onClick={()=>navigate("/signup")} >signup</button>
+  <Outlet/>
   </>
     
     )
