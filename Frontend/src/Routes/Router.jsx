@@ -24,7 +24,7 @@ const Router = ()=>{
   },
   {
     path : "signup",
-    element : !userData  ? <Signup/> : <Navigate to="/" />,
+    element : !userData  ? <Signup/> : <Navigate to="/profile" />,
   },
   {
     path : "login",

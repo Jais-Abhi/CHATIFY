@@ -10,10 +10,11 @@ export const serverUrl = "http://localhost:5000"
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
+  //   </StrictMode>,
     <Provider store={store} >
       <Router/>
     </Provider>
  
-  </StrictMode>,
+   
 )

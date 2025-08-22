@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import axios from "axios"
 import { serverUrl } from '../../main.jsx'
+import { setUserData } from '../../Redux/Slices/userSlice.js'
+import { useDispatch } from 'react-redux'
 
 const Signup = () => {
 
@@ -14,14 +16,15 @@ const Signup = () => {
   const [error,setError]= useState("")
 
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
   const submitHandler = async (e)=>{
     e.preventDefault()
     try {
       setloading(true)
       const result = await axios.post(`${serverUrl}/api/auth/signup`,{
-        username,email,password} , {withCredentials:true} )
+      username,email,password} , {withCredentials:true} )
       console.log(result)
+      dispatch(setUserData(result))
       setemail("")
       setpassword("")
       setloading(false)
