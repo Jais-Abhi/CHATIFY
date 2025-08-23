@@ -23,11 +23,11 @@ const Router = ()=>{
     element : userData  ? <Profile/> : <Navigate to="/login" />,
   },
   {
-    path : "signup",
+    path : "/signup",
     element : !userData  ? <Signup/> : <Navigate to="/profile" />,
   },
   {
-    path : "login",
+    path : "/login",
     element : !userData  ? <Login/> : <Navigate to="/" />,
   }
   ]
