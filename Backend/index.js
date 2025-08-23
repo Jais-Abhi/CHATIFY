@@ -1,12 +1,13 @@
 import dotenv from "dotenv"
 dotenv.config()
+console.log("Runs after all impoted");
 import express from "express"
 import mongoose from "mongoose"
 import authRoute from "./Routes/authRoute.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import userRoute from "./Routes/userRoute.js"
-
+import hello from "./config/hello.js";
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))

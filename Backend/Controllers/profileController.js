@@ -1,6 +1,5 @@
 
-
-const profileController = (req,res)=>{
-    console.log(req.userId)
-    console.log(req)
+const profileController = async (req,res)=>{
+    console.log(req.file)
 }
+export default profileController
