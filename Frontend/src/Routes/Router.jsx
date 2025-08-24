@@ -16,7 +16,7 @@ const Router = ()=>{
 
   {
     path: "/",
-    element : userData  ? <Home/> : <Navigate to="/login" />,
+    element : userData  ? userData.name && userData.profile.path ? <Home/> : <Navigate to="/profile" /> : <Navigate to="/login" />,
   },
   {
     path: "/profile",
@@ -28,7 +28,7 @@ const Router = ()=>{
   },
   {
     path : "/login",
-    element : !userData  ? <Login/> : <Navigate to="/" />,
+    element : !userData  ? <Login/> : userData.name && userData.profile.path ? <Navigate to="/" /> : <Navigate to="/profile" />,
   }
   ]
   )

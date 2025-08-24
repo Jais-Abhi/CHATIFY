@@ -16,6 +16,20 @@ const userSchema = new mongoose.Schema({
         type : String,
         required : true
     },
+    name :{
+        type : String,
+        default :null
+    },
+    profile :{
+        path : {
+            type :  String,
+            default :null
+        },
+        filename :{
+            type : String,
+            default : null
+        }
+    }
 },{timestamps : true})
 
 const User = mongoose.model("User",userSchema)

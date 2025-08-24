@@ -12,10 +12,10 @@ const getCurrentUser = ()=>{
         const fetchUser = async ()=>{
             try {
                 const user = await axios.get(`${serverUrl}/api/user/current`,{withCredentials :true})
-                console.log(user)
+                // console.log(user)
                 dispatch(setUserData(user.data))
             } catch (error) {
-                console.log("error while getting current user data",error)
+                console.log("error while getting current user data")
             }
         }
         fetchUser()

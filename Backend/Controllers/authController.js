@@ -31,7 +31,7 @@ try {
     const userData = await newUser.save()
     console.log(userData)
 
-    const token = genToken(userData._id)
+    const token = await genToken(userData._id)
 
     res.cookie("token",token,{
         httpOnly :true,
@@ -39,7 +39,9 @@ try {
         secure:false,
         maxAge :7*24*60*60*1000
     })
-    return res.status(201).json({userData})
+    console.log(token)
+    console.log(req.cookies.token)
+    return res.status(201).json(userData)
 
 } catch (err) {
     res.status(400).json({message : "signup fail"})
@@ -67,10 +69,10 @@ const loginController = async(req,res)=>{
         res.cookie("token",token,{
             httpOnly:true,
             maxAge : 7*24*60*60*1000,
+            sameSite : "strict",
             secure : false,
-            sameSite : "strict"
         })
-        console.log(req.cookies)
+        console.log(req.cookies.token)
         console.log(user)
         return res.status(201).json(user)
 

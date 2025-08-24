@@ -23,8 +23,8 @@ const Signup = () => {
       setloading(true)
       const result = await axios.post(`${serverUrl}/api/auth/signup`,{
       username,email,password} , {withCredentials:true} )
-      console.log(result)
-      dispatch(setUserData(result))
+      console.log(result.data)
+      dispatch(setUserData(result.data))
       setemail("")
       setpassword("")
       setloading(false)
