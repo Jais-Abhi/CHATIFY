@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import userDp from "../../assets/userDp.png"
 import { RiCamera3Line } from "react-icons/ri";
 import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import axios from 'axios';
 import { serverUrl } from '../../main.jsx';
 import { setUserData } from '../../Redux/Slices/userSlice.js';
@@ -43,6 +43,11 @@ const submitHandler = async(e)=>{
     console.log(result)
     dispatch(setUserData(result.data))
     setUpdate(false)
+    if(result.status === 201){
+      navigate("/")
+    }
+
+
   } catch (error) {
     console.log(error)
     setUpdate(false)
@@ -59,7 +64,7 @@ const submitHandler = async(e)=>{
       <div className=' h-screen w-full  md:h-[580px] md:w-[500px] bg-blue-200 md:rounded-[30px] '>
 
         <form onSubmit={(e)=>submitHandler(e)} >
-          <div className='h-[200px] w-full bg-slate-600 flex justify-center items-center md:rounded-t-[30px] '>
+          <div className='h-[200px] w-full  flex justify-center items-center md:rounded-t-[30px] '>
           <div onClick={()=>image.current.click()} className='relative h-[150px] w-[150px] border-[rgb(170,58,201)] border-2 rounded-full' >
             <img className=' object-cover h-[150px] w-[150px] border-[rgb(170,58,201)] border-2 rounded-full overflow-hidden ' 
             src={ frontImage} alt="" />
@@ -72,9 +77,9 @@ const submitHandler = async(e)=>{
           <input className='mt-8 px-4 py-2 w-4/5 border-[rgb(170,58,201)] border-2 rounded-[20px]' type='text' name="name" placeholder='name'
            required onChange={(e)=>setName(e.target.value)} value={name} />
           <input className='mt-8 px-4 py-2 w-4/5 border-[rgb(170,58,201)] border-2 rounded-[20px]' type="text" name="username"
-           disabled value={userData.username} />
+           disabled contentEditable={false} value={` ${userData.username}`} />
           <input className='mt-8 px-4 py-2 w-4/5 border-[rgb(170,58,201)] border-2 rounded-[20px]' type="email" name="email"
-            disabled value={userData.email} />
+            disabled contentEditable={false} value={userData.email} />
 
             <button type="submit" disabled={update} className=' disabled:bg-[rgb(162,122,173)] mt-8 px-4 py-2 w-2/5 text-[1.3rem] font-semibold text-white  bg-[rgb(170,58,201)] rounded-[25px]' 
           > {update ? "updating...." : "Update Profile"} </button>
