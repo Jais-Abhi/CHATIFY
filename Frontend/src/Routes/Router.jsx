@@ -7,9 +7,11 @@ import Login from '../components/Auth/Login.jsx';
 import getCurrentUser from '../Hooks/getCurrentUser.js';
 import { useSelector } from 'react-redux';
 import Profile from '../components/pages/Profile.jsx';
+import getOtherUsers from '../Hooks/getOtherUsers.js';
 
 const Router = ()=>{
     getCurrentUser()
+    getOtherUsers()
     const {userData} = useSelector((state)=> state.user)
     console.log(userData)
     const router = createBrowserRouter([

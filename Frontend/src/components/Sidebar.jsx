@@ -1,14 +1,32 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { FaSearch } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import { RiLogoutCircleLine } from "react-icons/ri";
+import { useNavigate } from 'react-router';
+import axios from 'axios';
+import { serverUrl } from '../main';
+import { setUserData } from '../Redux/Slices/userSlice';
 
 
 
 const Sidebar = () => {
-
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {otherUsers} = useSelector((state)=>state.user)
     const {userData} = useSelector((state)=>state.user)
     const [searchBox , setSearchBox] = useState(false)
+
+    const handleLogOut = async()=>{
+        try {
+            await axios.get(`${serverUrl}/api/auth/logout`,{withCredentials : true})
+            dispatch(setUserData(null))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
   return (
     <div className='w-[30%]  h-screen'>
         <div className=' h-[25%] w-full bg-[rgb(168,79,192)] relative'  >
@@ -32,14 +50,14 @@ const Sidebar = () => {
             </div>
             { !searchBox && 
             <div className='ml-6 w-full h-full flex gap-4 items-center ' > 
-                <div className='h-[60px] w-[60px]  rounded-full ' >
-                    <img src={userData.profile.path} className=' rounded-full' alt="" />
+                <div className='h-[60px] w-[60px]   rounded-full ' >
+                    <img src={userData.profile.path} className=' h-[60px] w-[60px] object-cover rounded-full' alt="" />
                 </div>
                 <div className='h-[60px] w-[60px]  rounded-full' >
-                    <img src={userData.profile.path} className=' rounded-full' alt="" />
+                    <img src={userData.profile.path} className=' h-[60px] w-[60px] object-cover rounded-full' alt="" />
                 </div>
                 <div className='h-[60px] w-[60px] rounded-full ' >
-                    <img src={userData.profile.path} className=' rounded-full' alt="" />
+                    <img src={userData.profile.path} className=' h-[60px] w-[60px] object-cover rounded-full' alt="" />
                 </div>
             </div>
             }
@@ -47,22 +65,31 @@ const Sidebar = () => {
             
 
 
-            <div className='h-[60px] w-[60px] absolute right-5 top-10 rounded-full'>
-                <img src={userData.profile.path} className='  rounded-full' alt="" />
+            <div className='h-[60px] w-[60px] absolute right-5 top-6 rounded-full'>
+                <img src={userData.profile.path} className='h-[60px] w-[60px] object-cover rounded-full' alt="" />
             </div>
         </div>
 
 
-        <div className=' h-[75%] border-collapse flex flex-col'>
-            <div className='shadow-lg shadow-gray-500 hover:bg-[rgb(167,173,183)] ml-2 p-1 flex items-center'>
+        <div className=' relative h-[75%] pt-2 border-collapse flex flex-col gap-2 bg-gray-100'>
+            {otherUsers.map((user)=>
+                <div key={user._id} className=' rounded-l-full rounded-r-full  shadow-lg shadow-gray-500 hover:bg-[rgb(167,173,183)] ml-4 mr-4 p-1 flex items-center'>
                 <div className='h-[60px] w-[60px] rounded-full ' >
-                    <img src={userData.profile.path} className=' rounded-full' alt="" />
+                    <img src={user.profile.path} className=' h-[60px] w-[60px] object-cover rounded-full' alt="" />
                 </div>
                 <div className='pl-3 text-black font-semibold text-[1.2rem]'>
-                    {userData.name}
+                    {user.name}
                 </div>
             </div>
+            )}
+            
+            <div onClick={handleLogOut} className=' absolute bottom-4 left-4 text-3xl bg-[rgb(175,104,195)] rounded-full p-2 text-gray-100' >
+                <RiLogoutCircleLine />
+            </div>
         </div>
+
+
+        
     </div>
   )
 }
