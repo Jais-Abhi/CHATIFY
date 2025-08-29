@@ -24,7 +24,7 @@ const MessageBox = () => {
     </div>
     {!selectedUser && 
     <div className='lg:w-[70%] hidden lg:h-screen bg-blue-100 lg:flex flex-col justify-center items-center font-semibold' >
-      <div className='text-[2rem] '  >Welcome to Chatify,</div>
+      <div className='text-[2rem] '>Welcome to Chatify,</div>
       <div className='text-xl' >Start conversation now </div>
     </div>
     }

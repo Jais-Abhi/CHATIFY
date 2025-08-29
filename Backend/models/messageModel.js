@@ -1,0 +1,23 @@
+import mongoose from "mongoose"
+const messageSchema = mongoose.Schema({
+    sender:{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "User",
+    },
+    receiver:{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "User",
+    },
+    message :{
+        type : String,
+        default : ""
+    },
+    image :{
+        type : String,
+        default : ""
+    },
+})
+
+const Message = mongoose.model("Message",messageSchema)
+
+export default Message
