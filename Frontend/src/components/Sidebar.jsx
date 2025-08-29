@@ -45,7 +45,7 @@ const Sidebar = () => {
 
                 {searchBox && 
                 <div className='w-full h-full '>
-                    <input type="text" className=' h-full pl-14 text-[1.2rem] p-2 rounded-full w-full' placeholder='Search chat' />
+                    <input type="text" className=' focus:outline-none h-full pl-14 text-[1.2rem] p-2 rounded-full w-full' placeholder='Search chat' />
                     <div onClick={()=>setSearchBox(false)} className=' absolute right-5  top-2 cursor-pointer font-semibold text-[1.8rem]'>
                     <RxCross2/>
                     </div>

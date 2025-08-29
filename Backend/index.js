@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 import userRoute from "./Routes/userRoute.js"
 import hello from "./config/hello.js";
+import messageRoute from "./Routes/messageRoute.js";
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -41,3 +42,4 @@ app.listen(port,()=>{
 
 app.use("/api/auth",authRoute)
 app.use("/api/user",userRoute)
+app.use("/api/message",messageRoute)
