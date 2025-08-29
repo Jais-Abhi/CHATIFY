@@ -10,13 +10,13 @@ const Sidebar = () => {
     const {userData} = useSelector((state)=>state.user)
     const [searchBox , setSearchBox] = useState(false)
   return (
-    <div className='w-[35%] bg-slate-600 h-screen'>
-        <div className=' h-[200px] w-full bg-[rgb(168,79,192)] relative'  >
-            <div className='text-white font-bold pl-4 text-[2rem]' >Chatify</div>
-            <div className='text-white font-semibold pl-4 pt-4 text-2xl' > {userData.name} </div>
+    <div className='w-[30%]  h-screen'>
+        <div className=' h-[25%] w-full bg-[rgb(168,79,192)] relative'  >
+            <div className='text-white font-bold pl-4 text-[1.6rem]' >Chatify</div>
+            <div className='text-white font-semibold pl-4 pt-2 text-[1.3rem]' > {userData.name} </div>
 
 
-            <div className='flex w-full h-[100px] items-center' >
+            <div className='flex w-full h-[55%] items-center' >
             <div className={` relative h-[45px] ml-4 flex items-center ${searchBox ? "w-[65%]" : "w-[45px]"} rounded-full`}>
                 <div onClick={()=>setSearchBox(true)} className=' h-full w-[45px] flex items-center justify-center absolute text-black text-[1.5rem] p-2 bg-white rounded-full cursor-pointer' >
                     <FaSearch/>
@@ -49,6 +49,18 @@ const Sidebar = () => {
 
             <div className='h-[60px] w-[60px] absolute right-5 top-10 rounded-full'>
                 <img src={userData.profile.path} className='  rounded-full' alt="" />
+            </div>
+        </div>
+
+
+        <div className=' h-[75%] border-collapse flex flex-col'>
+            <div className='shadow-lg shadow-gray-500 hover:bg-[rgb(167,173,183)] ml-2 p-1 flex items-center'>
+                <div className='h-[60px] w-[60px] rounded-full ' >
+                    <img src={userData.profile.path} className=' rounded-full' alt="" />
+                </div>
+                <div className='pl-3 text-black font-semibold text-[1.2rem]'>
+                    {userData.name}
+                </div>
             </div>
         </div>
     </div>
