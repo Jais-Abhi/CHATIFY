@@ -5,6 +5,7 @@ import { setSelectedUser } from '../Redux/Slices/userSlice';
 import { IoMdSend } from "react-icons/io";
 import { serverUrl } from '../main.jsx';
 import axios from 'axios';
+import Sender from './messageBox/Sender.jsx';
 
 const MessageBox = () => {
   const [message,setMessage] = useState("")
@@ -37,6 +38,8 @@ const MessageBox = () => {
         </div>
       </div>
       <div>
+        <Sender/>
+        
         {/* message box  */}
       </div>
       <div className=' absolute bottom-0 right-0 flex w-full h-[10%] items-center justify-center '>
