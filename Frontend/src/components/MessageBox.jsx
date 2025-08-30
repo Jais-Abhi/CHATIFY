@@ -6,6 +6,7 @@ import { IoMdSend } from "react-icons/io";
 import { serverUrl } from '../main.jsx';
 import axios from 'axios';
 import Sender from './messageBox/Sender.jsx';
+import Receiver from './messageBox/Receiver.jsx';
 
 const MessageBox = () => {
   const [message,setMessage] = useState("")
@@ -37,8 +38,19 @@ const MessageBox = () => {
           </span>
         </div>
       </div>
-      <div>
-        <Sender/>
+      <div className=' overflow-y-auto will-change-transform scrollbar-hide h-[80%]'>
+        {
+          
+        }
+        <Sender />
+        <Receiver/>
+        <Receiver/>
+        <Receiver/>
+        <Sender />
+        <Receiver/>
+        <Receiver/>
+        <Sender />
+
         
         {/* message box  */}
       </div>
