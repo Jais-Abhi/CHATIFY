@@ -22,6 +22,7 @@ const Sidebar = () => {
         try {
             await axios.get(`${serverUrl}/api/auth/logout`,{withCredentials : true})
             dispatch(setUserData(null))
+            dispatch(setSelectedUser(null))
         } catch (error) {
             console.log(error)
         }

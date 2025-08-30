@@ -38,16 +38,17 @@ const sendMessage = async (req,res)=>{
 }
 
 const getMessages = async(req,res)=>{
-try {
+    try {
     const sender = req.userId
     const {receiver} = req.params
     const conversation = await Conversation.findOne({
         participants :{$all : [sender,receiver]}
     }).populate("messages")
+
     return res.status(200).json(conversation)
 
 } catch (error) {
-    return res.status(400).json({message : "Error while getting Conversation"})
+    return res.status(400).json(error.message)
 }
 
 }

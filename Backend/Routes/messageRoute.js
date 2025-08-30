@@ -4,6 +4,6 @@ import { getMessages, sendMessage } from "../Controllers/messageController.js"
 const messageRoute = express.Router()
 
 messageRoute.post("/send/:receiver",isAuth,sendMessage)
-messageRoute.get("get/:receiver",isAuth,getMessages)
+messageRoute.get("/get/:receiver",isAuth,getMessages)
 
 export default messageRoute
