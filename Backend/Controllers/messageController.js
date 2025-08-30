@@ -27,8 +27,9 @@ const sendMessage = async (req,res)=>{
                 messages : [newMessage._id]
             })
         }
-
-        return res.status(200).json(conversation)
+        const msg = await conversation.populate("messages")
+        console.log(msg)
+        return res.status(200).json(msg)
         
 
     } catch (error) {
