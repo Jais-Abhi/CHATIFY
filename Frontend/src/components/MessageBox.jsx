@@ -10,7 +10,9 @@ import Receiver from './messageBox/Receiver.jsx';
 
 const MessageBox = () => {
   const [message,setMessage] = useState("")
+  const {messages} = useSelector((state)=>state.message)
   const {selectedUser} = useSelector((state)=>state.user)
+  const {userData} = useSelector((state)=>state.user)
   const dispatch = useDispatch()
 
   const handleSubmit = async(e)=>{
@@ -39,21 +41,19 @@ const MessageBox = () => {
         </div>
       </div>
       <div className=' overflow-y-auto will-change-transform scrollbar-hide h-[80%]'>
+        {messages.map((msg)=>
         {
-          
+          if(msg.sender == userData._id){
+            return <Sender key={msg._id} message={msg.message} />
+          }
+          else{
+            return <Receiver key={msg._id} message={msg.message} />
+          }
         }
-        <Sender />
-        <Receiver/>
-        <Receiver/>
-        <Receiver/>
-        <Sender />
-        <Receiver/>
-        <Receiver/>
-        <Sender />
-
-        
+        )}
         {/* message box  */}
       </div>
+
       <div className=' absolute bottom-0 right-0 flex w-full h-[10%] items-center justify-center '>
         <form onSubmit={(e)=>handleSubmit(e)} className='h-full w-full flex justify-center items-center' >
           <div className='relative h-[70%] flex w-[80%] items-center justify-center' >

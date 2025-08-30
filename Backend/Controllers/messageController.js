@@ -6,7 +6,6 @@ const sendMessage = async (req,res)=>{
         const sender = req.userId
         const {receiver} = req.params
         const {message} = req.body
-        console.log(req.body)
         let image
         if(req.body.image){
             image = req.body.image
@@ -14,9 +13,10 @@ const sendMessage = async (req,res)=>{
         const newMessage = await Message.create({
             sender,receiver,message
         })
-        const conversation = await Conversation.findOne({
+        let conversation = await Conversation.findOne({
             participants :{$all : [sender,receiver]}
         })
+        console.log(conversation)
 
         if(conversation){
             conversation.messages.push(newMessage._id)

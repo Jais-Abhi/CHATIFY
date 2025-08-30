@@ -13,7 +13,7 @@ const Router = ()=>{
     getCurrentUser()
     getOtherUsers()
     const {userData} = useSelector((state)=> state.user)
-    console.log(userData)
+    // console.log(userData)
     const router = createBrowserRouter([
 
   {
