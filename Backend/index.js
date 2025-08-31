@@ -9,7 +9,7 @@ import cors from "cors"
 import userRoute from "./Routes/userRoute.js"
 import hello from "./config/hello.js";
 import messageRoute from "./Routes/messageRoute.js";
-const app = express()
+import { app, server } from "./Socket/socket.js";
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
@@ -27,7 +27,7 @@ app.use(cors({
     credentials : true
 }))
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`app is running on port ${port}`)
     main()
     .then(()=>{
