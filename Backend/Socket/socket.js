@@ -1,6 +1,6 @@
 import http from "http"
 import express from "express"
-import Server from "socket.io"
+import {Server} from "socket.io"
 
 
 const app = express()
@@ -14,6 +14,8 @@ const io = new Server(server,{
 })
 
 
+io.on("connection",(socket)=>{
+    console.log(`connected to server ${socket.id}`)
+})
 
-
-export {server}
+export {app,server}
