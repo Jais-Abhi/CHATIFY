@@ -32,7 +32,11 @@ useEffect(()=>{
   console.log("effect run")
     socket.on("newMessage",(msg)=>{
       console.log(msg)
-      dispatch(setMessages([...messages,msg]))
+      if(msg.sender === selectedUser._id){
+        console.log("yess")
+        dispatch(setMessages([...messages,msg]))
+
+      }
   })
   return ()=> socket.off("newMessage")
 },[messages])
