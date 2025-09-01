@@ -16,7 +16,10 @@ const io = new Server(server,{
 const userSocketMap = {}
 
 io.on("connection",(socket)=>{
-    console.log(`connected to socket ${socket.handshake.query.userId}`)
+    const userId = socket.handshake.query.userId
+    if(userId){
+        userSocketMap[userId] = socket.id
+    }
 
 })
 
