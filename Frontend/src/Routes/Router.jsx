@@ -32,7 +32,10 @@ const Router = ()=>{
           console.log(msg)
         })
 
+         return ()=> socketIo.close()
+
       }
+
       
     },[userData])
 
