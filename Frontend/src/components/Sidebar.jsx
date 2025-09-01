@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { serverUrl } from '../main';
 import { setSelectedUser, setUserData } from '../Redux/Slices/userSlice';
-import { setMessage } from '../Redux/Slices/messageSlice.js';
-
 
 
 const Sidebar = () => {

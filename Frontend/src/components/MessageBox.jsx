@@ -7,6 +7,7 @@ import { serverUrl } from '../main.jsx';
 import axios from 'axios';
 import Sender from './messageBox/Sender.jsx';
 import Receiver from './messageBox/Receiver.jsx';
+import { setMessages } from '../Redux/Slices/messageSlice.js';
 
 const MessageBox = () => {
   const [message,setMessage] = useState("")
@@ -19,7 +20,7 @@ const MessageBox = () => {
     e.preventDefault()
     try {
       const result = await axios.post(`${serverUrl}/api/message/send/${selectedUser._id}`,{message},{withCredentials:true})
-      console.log(result)
+      dispatch(setMessages([...messages,result.data]))
       setMessage("")
     } catch (error) {
       console.log(error)

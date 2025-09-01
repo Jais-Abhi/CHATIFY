@@ -13,6 +13,7 @@ const sendMessage = async (req,res)=>{
         const newMessage = await Message.create({
             sender,receiver,message
         })
+
         let conversation = await Conversation.findOne({
             participants :{$all : [sender,receiver]}
         })
@@ -27,9 +28,8 @@ const sendMessage = async (req,res)=>{
                 messages : [newMessage._id]
             })
         }
-        const msg = await conversation.populate("messages")
-        console.log(msg)
-        return res.status(200).json(msg)
+        console.log(newMessage)
+        return res.status(200).json(newMessage)
         
 
     } catch (error) {

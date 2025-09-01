@@ -15,6 +15,10 @@ const io = new Server(server,{
 
 const userSocketMap = {}
 
+const getSocketId = (receiver)=>{
+    return userSocketMap[receiver]
+}
+
 io.on("connection",(socket)=>{
     const userId = socket.handshake.query.userId
     if(userId){
@@ -30,4 +34,4 @@ io.on("connection",(socket)=>{
 
 })
 
-export {app,server}
+export {app,server,io,getSocketId}
