@@ -10,7 +10,7 @@ import Profile from '../components/pages/Profile.jsx';
 import getOtherUsers from '../Hooks/getOtherUsers.js';
 import {io} from "socket.io-client"
 import { serverUrl } from '../main.jsx';
-import { setOnlineUsers } from '../Redux/Slices/userSlice.js';
+import { setOnlineUsers, setSocket } from '../Redux/Slices/userSlice.js';
 
 
 const Router = ()=>{
@@ -28,7 +28,7 @@ const Router = ()=>{
               { userId : userData?._id}
           }
         )
-
+        dispatch(setSocket(socketIo))
         socketIo.on("getOnlineUsers",(msg)=>{
           console.log(msg)
           dispatch(setOnlineUsers(msg))

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaArrowLeft } from "react-icons/fa";
 import { setSelectedUser } from '../Redux/Slices/userSlice';
@@ -13,6 +13,7 @@ const MessageBox = () => {
   const [message,setMessage] = useState("")
   const {messages} = useSelector((state)=>state.message)
   const {selectedUser} = useSelector((state)=>state.user)
+  const {socket} = useSelector((state)=>state.user)
   const {userData} = useSelector((state)=>state.user)
   const dispatch = useDispatch()
 
@@ -26,6 +27,15 @@ const MessageBox = () => {
       console.log(error)
     }
   }
+
+useEffect(()=>{
+  console.log("effect run")
+    socket.on("newMessage",(msg)=>{
+      console.log(msg)
+      dispatch(setMessages([...messages,msg]))
+  })
+  return ()=> socket.off("newMessage")
+},[messages])
 
   return (
     <>

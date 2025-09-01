@@ -1,5 +1,6 @@
 import Conversation from "../models/conversationModel.js"
 import Message from "../models/messageModel.js"
+import { getSocketId, io } from "../Socket/socket.js"
 
 const sendMessage = async (req,res)=>{
     try {
@@ -17,7 +18,7 @@ const sendMessage = async (req,res)=>{
         let conversation = await Conversation.findOne({
             participants :{$all : [sender,receiver]}
         })
-        console.log(conversation)
+        // console.log(conversation)
 
         if(conversation){
             conversation.messages.push(newMessage._id)
@@ -28,6 +29,11 @@ const sendMessage = async (req,res)=>{
                 messages : [newMessage._id]
             })
         }
+        
+        const socketId = getSocketId(receiver)
+        io.to(socketId).emit("newMessage",newMessage)
+
+
         console.log(newMessage)
         return res.status(200).json(newMessage)
         
