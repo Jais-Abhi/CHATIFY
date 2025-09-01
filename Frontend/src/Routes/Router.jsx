@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Home from '../components/pages/Home.jsx';
 // import App from "../App.jsx"s
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
@@ -8,12 +8,29 @@ import getCurrentUser from '../Hooks/getCurrentUser.js';
 import { useSelector } from 'react-redux';
 import Profile from '../components/pages/Profile.jsx';
 import getOtherUsers from '../Hooks/getOtherUsers.js';
+import {io} from "socket.io-client"
+import { serverUrl } from '../main.jsx';
+
 
 const Router = ()=>{
     getCurrentUser()
     getOtherUsers()
     const {userData} = useSelector((state)=> state.user)
-    // console.log(userData)
+
+    useEffect(()=>{
+      console.log("herer we go")
+      if(userData){
+        console.log("herer we go")
+        const socketIo = io(`${serverUrl}`,
+          {
+            query : 
+              { userId : userData?._id}
+          }
+        )
+
+      }
+      
+    },[userData])
     const router = createBrowserRouter([
 
   {

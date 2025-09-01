@@ -13,9 +13,11 @@ const io = new Server(server,{
     }
 })
 
+const userSocketMap = {}
 
 io.on("connection",(socket)=>{
-    console.log(`connected to server ${socket.id}`)
+    console.log(`connected to socket ${socket.handshake.query.userId}`)
+
 })
 
 export {app,server}
