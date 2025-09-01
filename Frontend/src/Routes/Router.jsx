@@ -28,11 +28,15 @@ const Router = ()=>{
           }
         )
 
+        socketIo.on("getOnlineUsers",(msg)=>{
+          console.log(msg)
+        })
+
       }
       
     },[userData])
 
-    
+
     const router = createBrowserRouter([
 
   {
