@@ -5,18 +5,19 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import Signup from '../components/Auth/Signup.jsx';
 import Login from '../components/Auth/Login.jsx';
 import getCurrentUser from '../Hooks/getCurrentUser.js';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Profile from '../components/pages/Profile.jsx';
 import getOtherUsers from '../Hooks/getOtherUsers.js';
 import {io} from "socket.io-client"
 import { serverUrl } from '../main.jsx';
+import { setOnlineUsers } from '../Redux/Slices/userSlice.js';
 
 
 const Router = ()=>{
     getCurrentUser()
     getOtherUsers()
     const {userData} = useSelector((state)=> state.user)
-
+    const dispatch = useDispatch()
     useEffect(()=>{
       console.log("herer we go")
       if(userData){
@@ -30,6 +31,7 @@ const Router = ()=>{
 
         socketIo.on("getOnlineUsers",(msg)=>{
           console.log(msg)
+          dispatch(setOnlineUsers(msg))
         })
 
          return ()=> socketIo.close()
