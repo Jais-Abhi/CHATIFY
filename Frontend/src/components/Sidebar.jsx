@@ -59,7 +59,7 @@ const Sidebar = () => {
             { !searchBox &&
              <div className='ml-6 w-full h-full flex gap-4 items-center overflow-x-auto scrollbar-hide' >
            { otherUsers.map((user)=>(
-                onlineUsers.includes(user._id) &&
+              onlineUsers &&  onlineUsers.includes(user._id) &&
             <div onClick={()=>dispatch(setSelectedUser(user))} className=' shrink-0 h-[60px] w-[60px]  cursor-pointer rounded-full ' >
                 <img src={user.profile.path} className=' shrink-0 h-[60px] w-[60px] object-cover rounded-full' alt="" />
             </div>
