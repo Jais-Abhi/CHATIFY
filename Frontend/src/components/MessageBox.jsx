@@ -29,11 +29,8 @@ const MessageBox = () => {
   }
 
 useEffect(()=>{
-  console.log("effect run")
     socket.on("newMessage",(msg)=>{
-      console.log(msg)
       if(msg.sender === selectedUser._id){
-        console.log("yess")
         dispatch(setMessages([...messages,msg]))
 
       }

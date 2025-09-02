@@ -19,9 +19,8 @@ const Router = ()=>{
     const {userData} = useSelector((state)=> state.user)
     const dispatch = useDispatch()
     useEffect(()=>{
-      console.log("herer we go")
       if(userData){
-        console.log("herer we go")
+
         const socketIo = io(`${serverUrl}`,
           {
             query : 
@@ -30,7 +29,6 @@ const Router = ()=>{
         )
         dispatch(setSocket(socketIo))
         socketIo.on("getOnlineUsers",(msg)=>{
-          console.log(msg)
           dispatch(setOnlineUsers(msg))
         })
 

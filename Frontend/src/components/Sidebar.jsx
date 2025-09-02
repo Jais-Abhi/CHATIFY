@@ -58,7 +58,6 @@ const Sidebar = () => {
            
             { !searchBox &&
              <div className='ml-6 w-full h-full flex gap-4 items-center overflow-x-auto scrollbar-hide' >
-                {console.log("onl;ine",onlineUsers)}
            { otherUsers.map((user)=>(
                 onlineUsers.includes(user._id) &&
             <div onClick={()=>dispatch(setSelectedUser(user))} className=' shrink-0 h-[60px] w-[60px]  cursor-pointer rounded-full ' >

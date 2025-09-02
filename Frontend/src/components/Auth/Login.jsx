@@ -29,7 +29,6 @@ const Login = () => {
       setloading(true)
       const result = await axios.post(`${serverUrl}/api/auth/login`,
         {email,password} , {withCredentials:true} )
-        console.log(result.data)
       dispatch(setUserData(result.data))
       setemail("")
       setpassword("")
@@ -38,9 +37,6 @@ const Login = () => {
       
 
   } catch (err) {
-    console.log(err)
-    // console.log(err.message)
-
     if(err.response){
       console.log(err.response?.data?.message)
       setError(err.response?.data?.message || "something went wrong")

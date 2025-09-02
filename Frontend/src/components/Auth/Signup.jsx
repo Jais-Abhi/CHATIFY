@@ -23,7 +23,6 @@ const Signup = () => {
       setloading(true)
       const result = await axios.post(`${serverUrl}/api/auth/signup`,{
       username,email,password} , {withCredentials:true} )
-      console.log(result.data)
       dispatch(setUserData(result.data))
       setemail("")
       setpassword("")
@@ -31,9 +30,6 @@ const Signup = () => {
       setError("")
 
     } catch (err) {
-       console.log(err)
-    // console.log(err.message)
-
     if(err.response){
       console.log(err.response?.data?.message)
       setError(err.response?.data?.message || "something went wrong")

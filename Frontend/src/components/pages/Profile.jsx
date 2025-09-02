@@ -41,7 +41,6 @@ const submitHandler = async(e)=>{
   }
   try {
     const result = await axios.post(`${serverUrl}/api/user/profile`,formData,{withCredentials : true})
-    console.log(result)
     dispatch(setUserData(result.data))
     setUpdate(false)
     if(result.status === 201){
