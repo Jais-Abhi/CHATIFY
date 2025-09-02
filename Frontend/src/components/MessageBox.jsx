@@ -40,7 +40,7 @@ useEffect(()=>{
 
   return (
     <>
-    <div style={{ height: "100dvh" }} className={` relative lg:w-[70%] w-full ${selectedUser ? "block" : "hidden w-0"} bg-blue-100 `} >
+    <div style={{ height: "100dvh" }} className={` flex flex-col relative lg:w-[70%] w-full ${selectedUser ? "block" : "hidden w-0"} bg-blue-100 `} >
       <div className=' flex items-center w-full h-[10%] bg-[rgb(168,79,192)] border-l-2 border-gray-300 rounded-b-[50px]' >
         <div onClick={()=>dispatch(setSelectedUser(null))} className=' cursor-pointer text-[1.2rem] ml-4' >
           <FaArrowLeft/>
@@ -52,7 +52,10 @@ useEffect(()=>{
           </span>
         </div>
       </div>
-      <div className=' overflow-y-auto will-change-transform scrollbar-hide pb-16 flex-1'>
+
+        {/* message box  */}
+
+      <div className='  overflow-y-auto will-change-transform scrollbar-hide pb-16'>
         {messages.map((msg)=>
         {
           if(msg.sender == userData._id){
@@ -63,7 +66,6 @@ useEffect(()=>{
           }
         }
         )}
-        {/* message box  */}
       </div>
 
       <div className=' absolute bottom-0 right-0 flex w-full h-[10%] items-center justify-center '>
