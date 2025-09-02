@@ -15,6 +15,7 @@ const Sidebar = () => {
     const {otherUsers} = useSelector((state)=>state.user)
     const {selectedUser} = useSelector((state)=>state.user)
     const {userData} = useSelector((state)=>state.user)
+    const {onlineUsers} = useSelector((state)=>state.user)
     const [searchBox , setSearchBox] = useState(false)
 
     const handleLogOut = async()=>{
@@ -54,20 +55,20 @@ const Sidebar = () => {
             </div>
 
             {/* Active users  */}
-
-            { !searchBox && 
-            <div className='ml-6 w-full h-full flex gap-4 items-center ' > 
-                <div className='h-[60px] w-[60px]  cursor-pointer rounded-full ' >
-                    <img src={userData.profile.path} className=' h-[60px] w-[60px] object-cover rounded-full' alt="" />
-                </div>
-                <div className='h-[60px] w-[60px]  rounded-full' >
-                    <img src={userData.profile.path} className=' h-[60px] w-[60px] object-cover rounded-full' alt="" />
-                </div>
-                <div className='h-[60px] w-[60px] rounded-full ' >
-                    <img src={userData.profile.path} className=' h-[60px] w-[60px] object-cover rounded-full' alt="" />
-                </div>
+           
+            { !searchBox &&
+             <div className='ml-6 w-full h-full flex gap-4 items-center overflow-x-auto scrollbar-hide' >
+           { otherUsers.map((user)=>(
+                onlineUsers.includes(user._id) &&
+            <div onClick={()=>dispatch(setSelectedUser(user))} className=' shrink-0 h-[60px] w-[60px]  cursor-pointer rounded-full ' >
+                <img src={user.profile.path} className=' shrink-0 h-[60px] w-[60px] object-cover rounded-full' alt="" />
             </div>
+            ))}
+            
+            </div>
+
             }
+
             </div>
 
             {/* profile DP  */}

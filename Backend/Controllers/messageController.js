@@ -33,8 +33,6 @@ const sendMessage = async (req,res)=>{
         const socketId = getSocketId(receiver)
         io.to(socketId).emit("newMessage",newMessage)
 
-
-        console.log(newMessage)
         return res.status(200).json(newMessage)
         
 
