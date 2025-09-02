@@ -15,7 +15,7 @@ const Sidebar = () => {
     const {otherUsers} = useSelector((state)=>state.user)
     const {selectedUser} = useSelector((state)=>state.user)
     const {userData} = useSelector((state)=>state.user)
-    const {onlineUsers} = useSelector((state)=>state.user)
+    const onlineUsers = useSelector((state) => state.user.onlineUsers)
     const [searchBox , setSearchBox] = useState(false)
 
     const handleLogOut = async()=>{
@@ -38,9 +38,9 @@ const Sidebar = () => {
 
             <div className='flex w-full h-[55%] items-center' >
             <div className={` relative h-[45px] ml-4 flex items-center ${searchBox ? "w-[65%]" : "w-[45px]"} rounded-full`}>
-                <div onClick={()=>setSearchBox(true)} className=' h-full w-[45px] flex items-center justify-center absolute text-black text-[1.5rem] p-2 bg-white rounded-full cursor-pointer' >
+                {/* <div onClick={()=>setSearchBox(true)} className=' h-full w-[45px] flex items-center justify-center absolute text-black text-[1.5rem] p-2 bg-white rounded-full cursor-pointer' >
                     <FaSearch/>
-                </div>
+                </div> */}
 
                 {/* SearchBox  */}
 
@@ -58,6 +58,7 @@ const Sidebar = () => {
            
             { !searchBox &&
              <div className='ml-6 w-full h-full flex gap-4 items-center overflow-x-auto scrollbar-hide' >
+                {console.log("onl;ine",onlineUsers)}
            { otherUsers.map((user)=>(
                 onlineUsers.includes(user._id) &&
             <div onClick={()=>dispatch(setSelectedUser(user))} className=' shrink-0 h-[60px] w-[60px]  cursor-pointer rounded-full ' >
@@ -79,7 +80,7 @@ const Sidebar = () => {
         </div>
 
 
-        <div className=' relative h-[75%] pt-2 border-collapse flex flex-col gap-2 bg-gray-100'>
+        <div className=' overflow-x-auto scrollbar-hide relative h-[75%] pt-2 border-collapse flex flex-col gap-2 bg-gray-100'>
 
             {otherUsers.map((user)=>
                 <div key={user._id} 
@@ -97,15 +98,15 @@ const Sidebar = () => {
             </div>
             )}
             
-            {/* logout  */}
+
+        </div>
+
+         {/* logout  */}
 
 
             <div onClick={handleLogOut} className=' absolute bottom-4 left-4 text-3xl bg-[rgb(175,104,195)] rounded-full p-2 text-gray-100 cursor-pointer' >
                 <RiLogoutCircleLine />
             </div>
-        </div>
-
-
         
     </div>
   )

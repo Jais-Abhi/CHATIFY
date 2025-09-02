@@ -6,12 +6,13 @@ import { FaArrowLeft } from "react-icons/fa";
 import { Navigate, useNavigate } from 'react-router';
 import axios from 'axios';
 import { serverUrl } from '../../main.jsx';
-import { setUserData } from '../../Redux/Slices/userSlice.js';
+import { setOnlineUsers, setUserData } from '../../Redux/Slices/userSlice.js';
 
 
 const Profile = () => {
 const navigate =  useNavigate()
 const {userData} = useSelector((state)=>state.user)
+const {onlineUsers} = useSelector((state)=>state.user)
 const image = useRef()
 const [name ,setName]= useState(userData.name || "")
 const [frontImage ,setFrontImage] = useState(userData.profile.path || userDp)
@@ -45,6 +46,7 @@ const submitHandler = async(e)=>{
     setUpdate(false)
     if(result.status === 201){
       navigate("/")
+
     }
 
 
