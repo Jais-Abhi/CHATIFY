@@ -28,7 +28,6 @@ const Sidebar = () => {
         }
     }
 
-
   return (
     <div className={`lg:w-[30%] ${selectedUser ? "hidden w-0" : "block"} w-full lg:block h-screen`}>
         <div className=' h-[25%] w-full bg-[rgb(168,79,192)] relative'  >
@@ -38,9 +37,9 @@ const Sidebar = () => {
 
             <div className='flex w-full h-[55%] items-center' >
             <div className={` relative h-[45px] ml-4 flex items-center ${searchBox ? "w-[65%]" : "w-[45px]"} rounded-full`}>
-                {/* <div onClick={()=>setSearchBox(true)} className=' h-full w-[45px] flex items-center justify-center absolute text-black text-[1.5rem] p-2 bg-white rounded-full cursor-pointer' >
+                <div onClick={()=>setSearchBox(true)} className=' h-full w-[45px] flex items-center justify-center absolute text-black text-[1.5rem] p-2 bg-white rounded-full cursor-pointer' >
                     <FaSearch/>
-                </div> */}
+                </div>
 
                 {/* SearchBox  */}
 
@@ -59,7 +58,7 @@ const Sidebar = () => {
             { !searchBox &&
              <div className='ml-6 w-full h-full flex gap-4 items-center overflow-x-auto scrollbar-hide' >
            { otherUsers.map((user)=>(
-              onlineUsers &&  onlineUsers.includes(user._id) &&
+               onlineUsers && onlineUsers.includes(user._id) &&
             <div onClick={()=>dispatch(setSelectedUser(user))} className=' shrink-0 h-[60px] w-[60px]  cursor-pointer rounded-full ' >
                 <img src={user.profile.path} className=' shrink-0 h-[60px] w-[60px] object-cover rounded-full' alt="" />
             </div>
