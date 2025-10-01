@@ -81,10 +81,10 @@ const Sidebar = () => {
         <div className=' overflow-x-auto scrollbar-hide relative h-[75%] pt-2 border-collapse flex flex-col gap-2 bg-gray-100'>
 
             {otherUsers.map((user)=>
+                user.name && 
                 <div key={user._id} 
                 onClick={()=> {
                     dispatch(setSelectedUser(user))
-                    
                 }} 
                 className='cursor-pointer rounded-l-full rounded-r-full  shadow-lg shadow-gray-500 hover:bg-[rgb(167,173,183)] ml-4 mr-4 p-1 flex items-center'>
                 <div className='h-[60px] w-[60px] rounded-full ' >
@@ -94,6 +94,7 @@ const Sidebar = () => {
                     {user.name}
                 </div>
             </div>
+                
             )}
             
 
