@@ -88,7 +88,11 @@ const loginController = async(req,res)=>{
 
 const logoutController = (req,res)=>{
     try {
-    res.clearCookie("token")
+    res.clearCookie("token",{
+        httpOnly:true,
+        sameSite : "none",
+        secure : true,
+    })
     return res.status(202).json({message : "logOut succesfull"})
     } catch (err) {
         return res.status(402).json({message : "error while logout"})
