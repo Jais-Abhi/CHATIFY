@@ -2,7 +2,6 @@
 
 ![Chatify Banner](https://img.shields.io/badge/Chatify-Real--Time--Chat-blue?style=for-the-badge&logo=react)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 ![Made with](https://img.shields.io/badge/Made%20with-❤️-red?style=flat-square)
 
 ---
@@ -32,9 +31,6 @@ With its **clean UI**, **instant communication**, and **powerful backend**, Chat
 - **One-to-One** and **Group** chats
 - **User authentication** (Signup/Login) using JWT and bcrypt
 - **Profile management** – avatar upload, username, and bio editing
-- **Typing indicators** and **online/offline status**
-- **Media sharing** (images, files)
-- **Instant notifications** for new messages
 
 🎨 **UI & UX**
 - Fully responsive design using **Tailwind CSS**
@@ -57,20 +53,11 @@ With its **clean UI**, **instant communication**, and **powerful backend**, Chat
 | Database        | MongoDB (via Mongoose)                         |
 | Authentication  | JWT, bcrypt.js                                 |
 | Cloud Storage   | Cloudinary                                     |
-| Hosting (suggested) | Vercel / Render / Netlify / Railway        |
+| Hosting         | Render                                         |
 | Version Control | Git & GitHub                                   |
 
 ---
 
-## 📸 Screenshots (Optional Section)
-
-> You can later add actual screenshots here after deploying your app.
-
-| Home Screen | Chat Window | Profile Page |
-|--------------|--------------|---------------|
-| ![Home](https://via.placeholder.com/300x180?text=Chatify+Home) | ![Chat](https://via.placeholder.com/300x180?text=Chatify+Chat) | ![Profile](https://via.placeholder.com/300x180?text=Chatify+Profile) |
-
----
 
 ## 🏗️ Project Setup
 
