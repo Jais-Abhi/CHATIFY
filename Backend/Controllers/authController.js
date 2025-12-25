@@ -35,8 +35,8 @@ try {
 
     res.cookie("token",token,{
         httpOnly :true,
-        sameSite :"strict",
-        secure:false,
+        sameSite :"none",
+        secure:true,
         maxAge :7*24*60*60*1000
     })
     console.log(token)
@@ -66,11 +66,11 @@ const loginController = async(req,res)=>{
 
         const token = await genToken(user._id)
 
-        res.cookie("token",token,{
+        await res.cookie("token",token,{
             httpOnly:true,
             maxAge : 7*24*60*60*1000,
-            sameSite : "strict",
-            secure : false,
+            sameSite : "none",
+            secure : true,
         })
         console.log(req.cookies.token)
         console.log(user)
@@ -88,7 +88,11 @@ const loginController = async(req,res)=>{
 
 const logoutController = (req,res)=>{
     try {
-    res.clearCookie("token")
+    res.clearCookie("token",{
+        httpOnly:true,
+        sameSite : "none",
+        secure : true,
+    })
     return res.status(202).json({message : "logOut succesfull"})
     } catch (err) {
         return res.status(402).json({message : "error while logout"})

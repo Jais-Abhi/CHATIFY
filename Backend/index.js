@@ -26,7 +26,7 @@ const main = async ()=>{
 }
 
 app.use(cors({
-    origin : "http://localhost:5173",
+    origin : "https://chatify-5hwp.onrender.com",
     credentials : true
 }))
 
