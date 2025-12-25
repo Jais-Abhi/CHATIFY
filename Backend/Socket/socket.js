@@ -8,7 +8,8 @@ const server = http.createServer(app)
 
 const io = new Server(server,{
     cors :{
-        origin : "https://chatify-5hwp.onrender.com",
+        // origin : "https://chatify-5hwp.onrender.com",
+        origin : "http://localhost:5173",
         Credential :true
     }
 })

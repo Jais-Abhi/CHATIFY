@@ -51,38 +51,75 @@ const Login = () => {
   }
 
   return (
-    <div className='w-full h-screen bg-slate-300 flex justify-center items-center' >
-      <div className=' h-screen w-full  md:h-[580px] md:w-[500px] bg-blue-200 md:rounded-[30px] '>
-        <div className='h-[150px] flex justify-center items-center bg-[rgb(170,58,201)] md:rounded-t-[30px]' >
-        <p className='text-2xl font-bold text-gray-300' >Login on <span className='text-white' >Chatify</span> </p>
-        </div>
-      <div className='flex flex-col justify-center items-center '>
-        <form  className='flex flex-col justify-center items-center w-full' onSubmit={(e)=>submitHandler(e)} >
-
-          <input className='mt-8 px-4 py-2 w-4/5 border-[rgb(170,58,201)] border-2 rounded-[20px]' type="email" name="email" placeholder='email'
-           required onChange={(e)=>setemail(e.target.value)} value={email} />
-
-          <div className=' w-4/5 relative mt-8' >
-            <input 
-            minLength="6" required className=' px-4 py-2 w-full border-[rgb(170,58,201)] border-2 rounded-[20px]' 
-            type={show ? "text" : "password"} name="password" placeholder='password'  
-            onChange={(e)=>setpassword(e.target.value)} value={password}
-            onInvalid={(e) => e.target.setCustomValidity("password must be at least 6 characters long")} 
-            onInput={(e) => e.target.setCustomValidity("")}
-              />
-            <span className=' absolute right-4 mt-[0.5rem] cursor-pointer font-medium text-[rgb(170,58,201)] ' onClick={()=>setShow(!show)} > {show ? "hide" : "show"} </span>
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-300 via-blue-200 to-pink-200 p-0 md:p-2">
+      <div className="w-full h-full min-h-screen md:min-h-0 md:h-auto md:w-full max-w-md bg-white/90 shadow-2xl rounded-none md:rounded-3xl px-4 py-8 md:px-8 md:py-12 flex flex-col items-center justify-center md:justify-start">
+        <div className="w-full flex flex-col items-center mb-8">
+          <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center mb-4 shadow-lg">
+            <span className="text-4xl font-bold text-white">💬</span>
           </div>
+          <h2 className="text-3xl font-extrabold text-gray-800 mb-1 tracking-tight">Welcome Back</h2>
+          <p className="text-md text-gray-500">Login to <span className="text-purple-700 font-semibold">Chatify</span></p>
+        </div>
+        <form className="w-full flex flex-col gap-6" onSubmit={submitHandler}>
 
- 
-
-
-          <button type="submit" className=' disabled:bg-[rgb(162,122,173)] mt-8 px-4 py-2 w-2/5 text-[1.3rem] font-semibold text-white  bg-[rgb(170,58,201)] rounded-[25px]' 
-          required disabled = {loading}  > {loading? "loading....": "login"} </button>
-         
+          <input
+            className="transition-all duration-200 px-5 py-3 w-full border-2 border-purple-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white text-gray-800 placeholder-gray-400 shadow-sm"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            onChange={(e) => setemail(e.target.value)}
+            value={email}
+            autoComplete="email"
+          />
+          <div className="relative w-full">
+            <input
+              minLength="6"
+              required
+              className="transition-all duration-200 px-5 py-3 w-full border-2 border-purple-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white text-gray-800 placeholder-gray-400 shadow-sm pr-16"
+              type={show ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              onChange={(e) => setpassword(e.target.value)}
+              value={password}
+              onInvalid={(e) => e.target.setCustomValidity("Password must be at least 6 characters long")}
+              onInput={(e) => e.target.setCustomValidity("")}
+              autoComplete="current-password"
+            />
+            <span
+              className="absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer font-medium text-purple-500 select-none text-sm"
+              onClick={() => setShow(!show)}
+            >
+              {show ? "Hide" : "Show"}
+            </span>
+          </div>
+          <button
+            type="submit"
+            className="mt-2 w-full py-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-bold shadow-md hover:scale-[1.03] transition-transform duration-150 disabled:opacity-60 disabled:cursor-not-allowed"
+            required
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Login"}
+          </button>
         </form>
-        <p onClick={()=>navigate("/signup")} className=' mt-[20px] text-[1.1rem] font-medium cursor-pointer'  >Create a new account ? <span className='text-blue-800' >signup</span></p>
-        <div className='w-[300px] text-center '  >{error ? <p className='text-red-700 mt-4 font-semibold' > {error}</p> : ""  }</div>
-      </div>
+        <div className="w-full flex flex-col items-center mt-6">
+          <p className="text-gray-600 text-base">
+            New here?{' '}
+            <span
+              onClick={() => navigate("/signup")}
+              className="text-purple-700 font-semibold cursor-pointer hover:underline"
+            >
+              Create an account
+            </span>
+          </p>
+          {error && (
+            <div className="w-full text-center">
+              <p className="text-red-600 mt-4 font-semibold text-sm bg-red-100 rounded-xl py-2 px-4 inline-block shadow-sm animate-pulse">
+                {error}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
