@@ -10,6 +10,9 @@ import userRoute from "./Routes/userRoute.js"
 import hello from "./config/hello.js";
 import messageRoute from "./Routes/messageRoute.js";
 import { app, server } from "./Socket/socket.js";
+import User from "./models/userModel.js";
+import Message from "./models/messageModel.js";
+import Conversation from "./models/conversationModel.js";
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
@@ -30,8 +33,10 @@ app.use(cors({
 server.listen(port,()=>{
     console.log(`app is running on port ${port}`)
     main()
-    .then(()=>{
-    console.log("Connected to DB")
+    .then(async ()=>{
+        console.log("Connected to DB")
+        // await User.deleteMany({});
+        // console.log("✅ All messages deleted (collection kept).");
     })
     .catch((err)=>{
     console.log(`FAiled to connect with DB`,err)

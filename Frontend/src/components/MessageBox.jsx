@@ -15,14 +15,18 @@ const MessageBox = () => {
   const {selectedUser} = useSelector((state)=>state.user)
   const {socket} = useSelector((state)=>state.user)
   const {userData} = useSelector((state)=>state.user)
+  const[sending,setSending] = useState(false)
   const dispatch = useDispatch()
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
+    setSending(true)
     try {
       const result = await axios.post(`${serverUrl}/api/message/send/${selectedUser._id}`,{message},{withCredentials:true})
       dispatch(setMessages([...messages,result.data]))
       setMessage("")
+      setSending(false)
+
     } catch (error) {
       console.log(error)
     }
@@ -40,8 +44,8 @@ useEffect(()=>{
 
   return (
     <>
-    <div className={` relative lg:w-[70%] w-full ${selectedUser ? "block" : "hidden w-0"} h-screen bg-blue-100 `} >
-      <div className=' flex items-center w-full h-[10%] bg-[rgb(168,79,192)] border-l-2 border-gray-300 rounded-b-[50px]' >
+    <div style={{ height: "100dvh" }} className={` flex flex-col relative lg:w-[70%] w-full ${selectedUser ? "block" : "hidden w-0"} bg-blue-100 `} >
+      <div className=' flex items-center w-full pt-4 pb-4 bg-[rgb(168,79,192)] border-l-2 border-gray-300 rounded-b-[50px]' >
         <div onClick={()=>dispatch(setSelectedUser(null))} className=' cursor-pointer text-[1.2rem] ml-4' >
           <FaArrowLeft/>
         </div>
@@ -52,7 +56,10 @@ useEffect(()=>{
           </span>
         </div>
       </div>
-      <div className=' overflow-y-auto will-change-transform scrollbar-hide h-[80%]'>
+
+        {/* message box  */}
+
+      <div className='  overflow-y-auto will-change-transform scrollbar-hide pb-16'>
         {messages.map((msg)=>
         {
           if(msg.sender == userData._id){
@@ -63,14 +70,13 @@ useEffect(()=>{
           }
         }
         )}
-        {/* message box  */}
       </div>
 
       <div className=' absolute bottom-0 right-0 flex w-full h-[10%] items-center justify-center '>
         <form onSubmit={(e)=>handleSubmit(e)} className='h-full w-full flex justify-center items-center' >
           <div className='relative h-[70%] flex w-[80%] items-center justify-center' >
-          <input autoComplete='off' type="text" onChange={(e)=>setMessage(e.target.value)} value={message} name="message"  className=' rounded-full pl-12 border-none focus:outline-none text-white w-full h-full bg-[rgb(163,54,193)] placeholder:text-gray-200 placeholder-opacity-100 text-[1.2rem] font-semibold' placeholder='Write message' />
-          <button type='submit' className=' absolute right-8 text-3xl text-gray-200'>
+          <input autoComplete='off' type="text" onChange={(e)=>setMessage(e.target.value)} value={message} name="message"  className=' rounded-full pl-12 pr-14 border-none focus:outline-none text-white w-full h-full bg-[rgb(163,54,193)] placeholder:text-gray-200 placeholder-opacity-100 text-[1.2rem] font-semibold' placeholder='Write message' />
+          <button disabled={sending} type='submit' className=' absolute right-4 text-3xl text-gray-200'>
             <IoMdSend />
           </button>
         </div>

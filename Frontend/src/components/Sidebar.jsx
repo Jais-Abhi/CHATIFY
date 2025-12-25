@@ -28,7 +28,6 @@ const Sidebar = () => {
         }
     }
 
-
   return (
     <div className={`lg:w-[30%] ${selectedUser ? "hidden w-0" : "block"} w-full lg:block h-screen`}>
         <div className=' h-[25%] w-full bg-[rgb(168,79,192)] relative'  >
@@ -38,9 +37,9 @@ const Sidebar = () => {
 
             <div className='flex w-full h-[55%] items-center' >
             <div className={` relative h-[45px] ml-4 flex items-center ${searchBox ? "w-[65%]" : "w-[45px]"} rounded-full`}>
-                {/* <div onClick={()=>setSearchBox(true)} className=' h-full w-[45px] flex items-center justify-center absolute text-black text-[1.5rem] p-2 bg-white rounded-full cursor-pointer' >
+                <div onClick={()=>setSearchBox(true)} className=' h-full w-[45px] flex items-center justify-center absolute text-black text-[1.5rem] p-2 bg-white rounded-full cursor-pointer' >
                     <FaSearch/>
-                </div> */}
+                </div>
 
                 {/* SearchBox  */}
 
@@ -82,10 +81,10 @@ const Sidebar = () => {
         <div className=' overflow-x-auto scrollbar-hide relative h-[75%] pt-2 border-collapse flex flex-col gap-2 bg-gray-100'>
 
             {otherUsers.map((user)=>
+                user.name && 
                 <div key={user._id} 
                 onClick={()=> {
                     dispatch(setSelectedUser(user))
-                    
                 }} 
                 className='cursor-pointer rounded-l-full rounded-r-full  shadow-lg shadow-gray-500 hover:bg-[rgb(167,173,183)] ml-4 mr-4 p-1 flex items-center'>
                 <div className='h-[60px] w-[60px] rounded-full ' >
@@ -95,6 +94,7 @@ const Sidebar = () => {
                     {user.name}
                 </div>
             </div>
+                
             )}
             
 
