@@ -44,22 +44,25 @@ useEffect(()=>{
 
   return (
     <>
-    <div style={{ height: "100dvh" }} className={` flex flex-col relative lg:w-[70%] w-full ${selectedUser ? "block" : "hidden w-0"} bg-blue-100 `} >
-      <div className=' flex items-center w-full pt-4 pb-4 bg-[rgb(168,79,192)] border-l-2 border-gray-300 rounded-b-[50px]' >
-        <div onClick={()=>dispatch(setSelectedUser(null))} className=' cursor-pointer text-[1.2rem] ml-4' >
+    <div style={{ height: "100dvh" }} className={`flex flex-col relative lg:w-[70%] w-full ${selectedUser ? "block" : "hidden w-0"} bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900`}>
+      <div className='flex items-center w-full pt-4 pb-4 bg-gradient-to-r from-cyan-600 to-blue-600 shadow-lg rounded-b-3xl border-b-2 border-cyan-400'>
+        <div onClick={()=>dispatch(setSelectedUser(null))} className='cursor-pointer text-[1.5rem] ml-4 text-white hover:text-cyan-200 transition-colors duration-200'>
           <FaArrowLeft/>
         </div>
-        <div className=' flex items-center w-full  ml-8'>
-          <img src={selectedUser?.profile?.path} className='h-[50px] w-[50px] rounded-full object-cover' alt="" />
-          <span className=' ml-4 text-2xl font-semibold text-gray-100'>
-            {selectedUser?.name}
-          </span>
+        <div className='flex items-center w-full ml-8 gap-4'>
+          <img src={selectedUser?.profile?.path} className='h-[50px] w-[50px] rounded-full object-cover border-2 border-cyan-300 shadow-lg' alt="" />
+          <div className='flex flex-col gap-1'>
+            <span className='text-2xl font-bold text-white drop-shadow'>
+              {selectedUser?.name}
+            </span>
+            <span className='text-xs text-cyan-100'>Online</span>
+          </div>
         </div>
       </div>
 
         {/* message box  */}
 
-      <div className='  overflow-y-auto will-change-transform scrollbar-hide pb-16'>
+      <div className='flex-1 overflow-y-auto will-change-transform scrollbar-hide pb-24 pt-4 px-4 space-y-3'>
         {messages.map((msg)=>
         {
           if(msg.sender == userData._id){
@@ -72,21 +75,21 @@ useEffect(()=>{
         )}
       </div>
 
-      <div className=' absolute bottom-0 right-0 flex w-full h-[10%] items-center justify-center '>
-        <form onSubmit={(e)=>handleSubmit(e)} className='h-full w-full flex justify-center items-center' >
-          <div className='relative h-[70%] flex w-[80%] items-center justify-center' >
-          <input autoComplete='off' type="text" onChange={(e)=>setMessage(e.target.value)} value={message} name="message"  className=' rounded-full pl-12 pr-14 border-none focus:outline-none text-white w-full h-full bg-[rgb(163,54,193)] placeholder:text-gray-200 placeholder-opacity-100 text-[1.2rem] font-semibold' placeholder='Write message' />
-          <button disabled={sending} type='submit' className=' absolute right-4 text-3xl text-gray-200'>
-            <IoMdSend />
-          </button>
-        </div>
+      <div className='absolute bottom-0 right-0 flex w-full h-[12%] items-center justify-center bg-gradient-to-t from-gray-900 via-slate-800 to-transparent rounded-t-3xl shadow-2xl px-4 py-4'>
+        <form onSubmit={(e)=>handleSubmit(e)} className='h-full w-full flex justify-center items-center'>
+          <div className='relative h-[70%] flex w-[90%] items-center justify-center'>
+            <input autoComplete='off' type="text" onChange={(e)=>setMessage(e.target.value)} value={message} name="message" className='rounded-full pl-12 pr-14 border-2 border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white w-full h-full bg-slate-700 placeholder:text-gray-400 placeholder-opacity-100 text-[1.1rem] font-semibold shadow-md transition-all duration-200' placeholder='Write message' />
+            <button disabled={sending} type='submit' className='absolute right-4 text-3xl text-cyan-400 hover:text-cyan-200 transition-colors duration-200'>
+              <IoMdSend />
+            </button>
+          </div>
         </form>
       </div>
     </div>
     {!selectedUser && 
-    <div className='lg:w-[70%] hidden lg:h-screen bg-blue-100 lg:flex flex-col justify-center items-center font-semibold' >
-      <div className='text-[2rem] '>Welcome to Chatify,</div>
-      <div className='text-xl' >Start conversation now </div>
+    <div className='lg:w-[70%] hidden lg:h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 lg:flex flex-col justify-center items-center font-semibold'>
+      <div className='text-[2.5rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4 drop-shadow-lg'>Welcome to Chatify</div>
+      <div className='text-xl text-gray-300'>Start a conversation now</div>
     </div>
     }
 
