@@ -105,7 +105,16 @@ const submitHandler = async(e)=>{
               />
             </div>
 
-
+            <div>
+              <label className='block text-sm font-semibold text-gray-700 mb-2'>Email</label>
+              <input 
+                className='transition-all duration-200 px-5 py-3 w-full border-2 border-gray-300 rounded-2xl bg-gray-100 text-gray-600 shadow-sm cursor-not-allowed'
+                type="email"
+                name="email"
+                disabled
+                value={userData.email}
+              />
+            </div>
 
             <button 
               type="submit"
