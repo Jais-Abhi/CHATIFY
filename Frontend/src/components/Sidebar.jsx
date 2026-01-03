@@ -70,7 +70,9 @@ const Sidebar = () => {
         {/* profile DP  */}
 
         <div onClick={()=>navigate("/profile")} className='cursor-pointer h-[60px] w-[60px] absolute right-6 top-6 rounded-full border-3 border-cyan-300 shadow-lg hover:scale-110 transition-transform duration-200'>
-          <img src={userData.profile.path} className='h-[60px] w-[60px] object-cover rounded-full' alt="" />
+          <img src={userData.profile.path}
+          draggable={false}
+           className='h-[60px] w-[60px] object-cover rounded-full' alt="" />
         </div>
       </div>
 
@@ -83,7 +85,9 @@ const Sidebar = () => {
           }} 
           className='cursor-pointer rounded-2xl shadow-lg hover:bg-slate-700/80 hover:shadow-cyan-500/30 ml-2 mr-2 p-3 flex items-center gap-3 bg-slate-700/50 transition-all duration-200 group border border-slate-600 hover:border-cyan-500'>
             <div className='h-[54px] w-[54px] rounded-full flex-shrink-0 border-2 border-slate-500 group-hover:border-cyan-400 transition-colors duration-200'>
-              <img src={user.profile.path} className='h-[54px] w-[54px] object-cover rounded-full' alt="" />
+              <img src={user.profile.path}
+              draggable={false}
+              className='h-[54px] w-[54px] object-cover rounded-full' alt="" />
             </div>
             <div className='flex-1 overflow-hidden'>
               <div className='text-white font-semibold text-[1.1rem] group-hover:text-cyan-300 transition-colors duration-200'>

@@ -50,7 +50,9 @@ useEffect(()=>{
           <FaArrowLeft/>
         </div>
         <div className='flex items-center w-full ml-8 gap-4'>
-          <img src={selectedUser?.profile?.path} className='h-[50px] w-[50px] rounded-full object-cover border-2 border-cyan-300 shadow-lg' alt="" />
+          <img src={selectedUser?.profile?.path}
+          draggable={false}
+          className='h-[50px] w-[50px] rounded-full object-cover border-2 border-cyan-300 shadow-lg' alt="" />
           <div className='flex flex-col gap-1'>
             <span className='text-2xl font-bold text-white drop-shadow'>
               {selectedUser?.name}
