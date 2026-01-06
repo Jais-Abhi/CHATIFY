@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from 'react-router';
 import axios from 'axios';
 import { serverUrl } from '../../main.jsx';
 import { setOnlineUsers, setUserData } from '../../Redux/Slices/userSlice.js';
+import Logout from '../Auth/Logout.jsx';
 
 
 const Profile = () => {
@@ -57,11 +58,19 @@ const submitHandler = async(e)=>{
 
   return (
     <>
-    <div className='relative w-full h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 flex justify-center items-center p-0 md:p-2'>
-      <div onClick={()=>navigate("/")} className='cursor-pointer absolute text-[1.5rem] left-4 top-4 z-10 text-black  md:text-white hover:text-cyan-300 transition-colors duration-200'>
+    <div className='relative w-full h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 
+    flex justify-center items-center p-0 md:p-2'>
+      
+      <div className='w-full h-full min-h-screen md:min-h-0 md:h-auto md:w-[28rem] bg-white/90 shadow-2xl rounded-none md:rounded-3xl px-8 py-[1.5rem] flex flex-col items-center justify-center md:justify-start relative'>
+
+      <div onClick={()=>navigate("/")} className='cursor-pointer absolute text-[1.5rem] left-4 top-4 z-10 text-black hover:text-cyan-800 transition-colors duration-200'>
         <FaArrowLeft />
       </div>
-      <div className='w-full h-full min-h-screen md:min-h-0 md:h-auto md:w-[28rem] bg-white/90 shadow-2xl rounded-none md:rounded-3xl px-8 py-[1.5rem] flex flex-col items-center justify-center md:justify-start'>
+
+      <div className='absolute top-[5rem] right-[5rem]' >
+        <Logout/>
+      </div>
+
         <form onSubmit={(e)=>submitHandler(e)} className='w-full flex flex-col items-center gap-6'>
           <div className='w-full flex flex-col items-center pt-4'>
             <div onClick={()=>image.current.click()} className='relative h-[140px] w-[140px] border-4 border-cyan-400 rounded-full shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-200 cursor-pointer group'>

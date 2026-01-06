@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaSearch } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import { RiLogoutCircleLine } from "react-icons/ri";
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { serverUrl } from '../main';
@@ -18,15 +17,7 @@ const Sidebar = () => {
     const onlineUsers = useSelector((state) => state.user.onlineUsers)
     const [searchBox , setSearchBox] = useState(false)
 
-    const handleLogOut = async()=>{
-        try {
-            await axios.get(`${serverUrl}/api/auth/logout`,{withCredentials : true})
-            dispatch(setUserData(null))
-            dispatch(setSelectedUser(null))
-        } catch (error) {
-            console.log(error)
-        }
-    }
+
 
   return (
     <div className={`lg:w-[30%] ${selectedUser ? "hidden w-0" : "block"} w-full lg:block h-screen bg-gradient-to-br from-slate-800 via-purple-900 to-slate-800 transition-all duration-300`}>
@@ -98,11 +89,8 @@ const Sidebar = () => {
         )}
       </div>
 
-      {/* logout  */}
 
-      <div onClick={handleLogOut} className='absolute bottom-4 left-4 text-3xl bg-gradient-to-r from-red-600 to-red-700 rounded-full p-3 text-white cursor-pointer shadow-lg hover:scale-110 transition-transform duration-200 hover:shadow-red-500/50'>
-        <RiLogoutCircleLine />
-      </div>
+      
     </div>
   )
 }
