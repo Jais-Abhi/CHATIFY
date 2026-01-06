@@ -35,8 +35,10 @@ try {
 
     res.cookie("token",token,{
         httpOnly :true,
-        sameSite :"none",
-        secure:true,
+        //sameSite :"none",
+        sameSite :"lax",
+        secure:false,
+        //secure:true,
         maxAge :7*24*60*60*1000
     })
     console.log(token)
@@ -69,8 +71,10 @@ const loginController = async(req,res)=>{
         await res.cookie("token",token,{
             httpOnly:true,
             maxAge : 7*24*60*60*1000,
-            sameSite : "none",
-            secure : true,
+            //sameSite :"none",
+            sameSite :"lax",
+            secure:false,
+            //secure:true,
         })
         console.log(req.cookies.token)
         console.log(user)
@@ -90,8 +94,10 @@ const logoutController = (req,res)=>{
     try {
     res.clearCookie("token",{
         httpOnly:true,
-        sameSite : "none",
-        secure : true,
+        //sameSite :"none",
+        sameSite :"lax",
+        secure:false,
+        //secure:true,
     })
     return res.status(202).json({message : "logOut succesfull"})
     } catch (err) {

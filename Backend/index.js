@@ -27,11 +27,16 @@ const main = async ()=>{
 
 app.use(cors({
     // origin : "https://chatify-5hwp.onrender.com",
-    origin : "http://localhost:5173",
+    origin : 
+    [
+        "http://localhost:5173",
+        "http://10.101.13.184:5173"
+
+    ],
     credentials : true
 }))
 
-server.listen(port,()=>{
+server.listen(port,"0.0.0.0",()=>{
     console.log(`app is running on port ${port}`)
     main()
     .then(async ()=>{

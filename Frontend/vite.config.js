@@ -8,5 +8,6 @@ export default defineConfig({
     watch: {
       usePolling: true, // fixes HMR on some systems
     },
+    host: true, // allows access from network
   },
 });

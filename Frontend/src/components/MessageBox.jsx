@@ -79,9 +79,12 @@ useEffect(()=>{
 
       <div className='absolute bottom-0 right-0 flex w-full h-[12%] items-center justify-center bg-gradient-to-t from-purple-100 via-blue-50 to-transparent rounded-t-3xl shadow-2xl px-4 py-4'>
         <form onSubmit={(e)=>handleSubmit(e)} className='h-full w-full flex justify-center items-center'>
-          <div className='relative h-[70%] flex w-[90%] items-center justify-center'>
+          <div className='relative h-[90%] flex w-[90%] items-center justify-center'>
+
             <input autoComplete='off' type="text" onChange={(e)=>setMessage(e.target.value)} value={message} name="message" className='rounded-full pl-12 pr-14 border-2 border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 text-gray-800 w-full h-full bg-white/80 placeholder:text-gray-500 placeholder-opacity-100 text-[1.1rem] font-semibold shadow-md transition-all duration-200' placeholder='Write message' />
+
             <button disabled={sending} type='submit' className='absolute right-4 text-3xl text-purple-500 hover:text-purple-600 transition-colors duration-200'>
+
               <IoMdSend />
             </button>
           </div>

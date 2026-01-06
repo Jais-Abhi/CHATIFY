@@ -27,7 +27,7 @@ const Router = ()=>{
               { userId : userData?._id}
           }
         )
-        dispatch(setSocket(socketIo))
+         dispatch(setSocket(socketIo))
         socketIo.on("getOnlineUsers",(msg)=>{
           dispatch(setOnlineUsers(msg))
         })
