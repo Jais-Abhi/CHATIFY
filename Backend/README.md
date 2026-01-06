@@ -44,18 +44,15 @@ Cookies
 res.cookie("token", token, {
   httpOnly: true,
   sameSite: "none",
-  secure: false,
+  secure: true,
   maxAge: 7 * 24 * 60 * 60 * 1000
 })
-
-
+```
 
 ## 🟡 LAN MODE (Laptop + Phone on Same Wi-Fi)
 
-
-
-Server (IMPORTANT)
-
+### Server
+```js
 
 app.listen(5000, "0.0.0.0", () => {
   console.log("Server running on LAN")
@@ -100,12 +97,13 @@ secure: true
 
 
 in LAN mode (HTTP only).
-
+```
 
 
 ## 🔴 PRODUCTION MODE (Deployed App)
 
-Server
+### Server
+```js
 
 app.listen(5000, () => {
   console.log("Server running in production")
@@ -135,3 +133,4 @@ res.cookie("token", token, {
   secure: true,
   maxAge: 7 * 24 * 60 * 60 * 1000
 })
+```
