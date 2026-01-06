@@ -137,8 +137,8 @@ const submitHandler = async(e)=>{
               // updation is under process
 
               
-              // disabled={update}
-              disabled={true}          // remove this line when updation is implemented
+              disabled={update}
+              //disabled={true}          // remove this line when updation is implemented
 
 
               className='mt-4 w-full py-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 

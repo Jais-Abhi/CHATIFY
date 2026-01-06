@@ -10,6 +10,7 @@ import Receiver from './messageBox/Receiver.jsx';
 import { setMessages } from '../Redux/Slices/messageSlice.js';
 
 const MessageBox = () => {
+  const [frontMessage ,setFrontMessage] = useState("")
   const [message,setMessage] = useState("")
   const {messages} = useSelector((state)=>state.message)
   const {selectedUser} = useSelector((state)=>state.user)
@@ -21,6 +22,7 @@ const MessageBox = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault()
     setSending(true)
+    setFrontMessage(message)
     try {
       const result = await axios.post(`${serverUrl}/api/message/send/${selectedUser._id}`,{message},{withCredentials:true})
       dispatch(setMessages([...messages,result.data]))
@@ -64,7 +66,7 @@ useEffect(()=>{
 
         {/* message box  */}
 
-      <div className='flex-1 overflow-y-auto will-change-transform scrollbar-hide pb-24 pt-4 px-4 space-y-3'>
+      <div className='flex-1 overflow-y-auto will-change-transform scrollbar-hide pb-24 pt-4 md:px-4  space-y-3'>
         {messages.map((msg)=>
         {
           if(msg.sender == userData._id){
