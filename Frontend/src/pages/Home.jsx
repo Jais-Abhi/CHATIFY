@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
-import Sidebar from '../Sidebar'
-import MessageBox from '../MessageBox'
-import getMessages from '../../Hooks/getMessages.js'
+import Sidebar from '../components/Sidebar.jsx'
+import MessageBox from '../components/MessageBox.jsx'
+import getMessages from '../Hooks/getMessages.js'
 
 const Home = () => {
 

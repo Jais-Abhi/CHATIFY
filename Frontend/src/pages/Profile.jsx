@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import userDp from "../../assets/userDp.png"
+import userDp from "../assets/userDp.png"
 import { RiCamera3Line } from "react-icons/ri";
 import { FaArrowLeft } from "react-icons/fa";
 import { Navigate, useNavigate } from 'react-router';
 import axios from 'axios';
-import { serverUrl } from '../../main.jsx';
-import { setOnlineUsers, setUserData } from '../../Redux/Slices/userSlice.js';
-import Logout from '../Auth/Logout.jsx';
+import { serverUrl } from '../main.jsx';
+import { setOnlineUsers, setUserData } from '../Redux/Slices/userSlice.js';
+import Logout from './Auth/Logout.jsx';
 
 
 const Profile = () => {

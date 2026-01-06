@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import Home from '../components/pages/Home.jsx';
+import Home from '../pages/Home.jsx';
 // import App from "../App.jsx"s
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
-import Signup from '../components/Auth/Signup.jsx';
-import Login from '../components/Auth/Login.jsx';
+import Signup from '../pages/Auth/Signup.jsx';
+import Login from '../pages/Auth/Login.jsx';
 import getCurrentUser from '../Hooks/getCurrentUser.js';
 import { useDispatch, useSelector } from 'react-redux';
-import Profile from '../components/pages/Profile.jsx';
+import Profile from '../pages/Profile.jsx';
 import getOtherUsers from '../Hooks/getOtherUsers.js';
 import {io} from "socket.io-client"
 import { serverUrl } from '../main.jsx';
