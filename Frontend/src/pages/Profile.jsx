@@ -127,7 +127,15 @@ const submitHandler = async(e)=>{
 
             <button 
               type="submit"
-              disabled={update}
+
+
+              // updation is under process
+
+              
+              // disabled={update}
+              disabled={true}          // remove this line when updation is implemented
+
+              
               className='mt-4 w-full py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-lg font-bold shadow-md hover:scale-[1.03] transition-transform duration-150 disabled:opacity-60 disabled:cursor-not-allowed'
             >
               {update ? "Updating..." : "Update Profile"}

@@ -28,7 +28,7 @@ const LogoutPopup = ({ onConfirm, onCancel }) => {
           </button>
           <button
             onClick={onConfirm}
-            className='flex-1 px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2'
+            className='flex-1 px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-lg hover:shadow-lg hover:from-red-800 hover:to-red-900 transition-all duration-200 flex items-center justify-center gap-2'
           >
             <MdLogout className='text-xl' />
             Logout
