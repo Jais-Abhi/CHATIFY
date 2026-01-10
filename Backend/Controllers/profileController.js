@@ -2,9 +2,9 @@ import User from "../models/userModel.js"
 
 
 const profileController = async (req,res)=>{
-    console.log(req.file.path)
-    console.log(req.file.filename)
-    console.log(req.body.name)
+    console.log(req?.file?.path)
+    console.log(req?.file?.filename)
+    console.log(req?.body?.name)
     console.log(req.userId)
     try {
         if(!req.body.name){
@@ -13,7 +13,19 @@ const profileController = async (req,res)=>{
         const verifyById = await User.findById(req.userId)
         if(!verifyById){
             return res.status(401).json({message : "user Not find for profile updation"})
+        }        
+
+        if(!req.file){
+            console.log("no Profile update")
+            const user = await User.findByIdAndUpdate(req.userId,{
+                name : req.body.name,
+                },{new:true})
+
+            console.log(user)
+            return res.status(201).json(user)
         }
+        
+        console.log(req?.file)
         const user = await User.findByIdAndUpdate(req.userId,{
             name : req.body.name,
             profile : {

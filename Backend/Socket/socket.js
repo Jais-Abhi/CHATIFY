@@ -12,7 +12,6 @@ const io = new Server(server,{
         origin : 
         [
             "http://localhost:5173",
-            "http://10.101.13.184:5173"
         ],
 
         Credential :true

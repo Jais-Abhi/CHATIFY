@@ -21,9 +21,9 @@ const Sidebar = () => {
 
   return (
     <div className={`lg:w-[30%] ${selectedUser ? "hidden w-0" : "block"} w-full lg:block h-screen bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100 transition-all duration-300`}>
-      <div className='h-[25%] w-full bg-gradient-to-r from-purple-300 via-blue-200 to-pink-200 relative rounded-b-3xl shadow-lg border-b-2 border-purple-300'>
-        <div className='text-gray-800 font-bold pl-6 pt-6 text-[2rem] drop-shadow-lg'>Chatify</div>
-        <div className='text-gray-700 font-semibold pl-6 pt-2 text-[1.2rem]'>{userData.name}</div>
+      <div className='h-[15%] w-full bg-gradient-to-r from-purple-300 via-blue-200 to-pink-200 relative rounded-b-3xl shadow-lg border-b-2 border-purple-300'>
+        <div className='text-gray-800 font-bold pl-6 pb-2 text-[2rem] drop-shadow-lg'>Chatify</div>
+        {/* <div className='text-gray-700 font-semibold pl-6 pt-2 text-[1.2rem]'>{userData.name}</div> */}
 
         <div className='flex w-full h-[35%] items-center'>
           <div className={`relative h-[45px] ml-4 flex items-center ${searchBox ? "w-[65%]" : "w-[45px]"} rounded-full transition-all duration-200`}>
@@ -67,7 +67,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className='overflow-y-auto scrollbar-hide relative h-[75%] pt-4 px-2 flex flex-col gap-3 bg-white/30'>
+      <div className='overflow-y-auto scrollbar-hide relative h-[85%] pt-4 px-2 flex flex-col gap-3 bg-white/30'>
         {otherUsers.map((user)=>
           user.name && 
           <div key={user._id} 
