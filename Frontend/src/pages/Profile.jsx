@@ -8,7 +8,7 @@ import axios from 'axios';
 import { serverUrl } from '../main.jsx';
 import { setOnlineUsers, setUserData } from '../Redux/Slices/userSlice.js';
 import Logout from './Auth/Logout.jsx';
-
+import {ToastContainer, toast} from "react-toastify"
 
 const Profile = () => {
 const navigate =  useNavigate()
@@ -45,7 +45,9 @@ const submitHandler = async(e)=>{
     dispatch(setUserData(result.data))
     setUpdate(false)
     if(result.status === 201){
-      navigate("/")
+      toast.success("profile updated",{
+        position : 'top-left'
+      })
 
     }
 
@@ -67,6 +69,8 @@ const submitHandler = async(e)=>{
       <div onClick={()=>navigate("/")} className='cursor-pointer absolute text-[1.5rem] left-4 top-4 z-10 text-gray-700 hover:text-purple-600 transition-colors duration-200'>
         <FaArrowLeft />
       </div>
+
+      <ToastContainer/>
 
       <div className='absolute top-[5rem] right-[5rem]' >
         <Logout/>
