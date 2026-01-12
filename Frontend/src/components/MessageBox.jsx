@@ -46,7 +46,10 @@ useEffect(()=>{
 
   return (
     <>
-    <div style={{ height: "100dvh" }} className={`flex flex-col relative lg:w-[70%] w-full ${selectedUser ? "block" : "hidden w-0"} bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100`}>
+    {
+      selectedUser ?
+    
+    <div style={{ height: "100dvh" }} className={`flex flex-col relative lg:w-[70%] w-full bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100`}>
       <div className='flex items-center w-full pt-4 pb-4 bg-gradient-to-r from-purple-300 via-blue-200 to-pink-200 shadow-lg rounded-b-3xl border-b-2 border-purple-300'>
         <div onClick={()=>dispatch(setSelectedUser(null))} className='cursor-pointer text-[1.5rem] ml-4 text-gray-700 hover:text-purple-600 transition-colors duration-200'>
           <FaArrowLeft/>
@@ -92,14 +95,16 @@ useEffect(()=>{
           </div>
         </form>
       </div>
-    </div>
-    {!selectedUser && 
+    </div> 
+    
+    : 
+
     <div className='lg:w-[70%] hidden lg:h-screen bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100 lg:flex flex-col justify-center items-center font-semibold'>
       <div className='text-[2.5rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 mb-4 drop-shadow-lg'>Welcome to Chatify</div>
       <div className='text-xl text-gray-600'>Start a conversation now</div>
     </div>
+    
     }
-
     </>
 
 
