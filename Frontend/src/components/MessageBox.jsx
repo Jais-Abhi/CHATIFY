@@ -48,6 +48,8 @@ useEffect(()=>{
     <>
     {
       selectedUser ?
+
+      
     
     <div style={{ height: "100dvh" }} className={`flex flex-col relative lg:w-[70%] w-full bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100`}>
       <div className='flex items-center w-full pt-4 pb-4 bg-gradient-to-r from-purple-300 via-blue-200 to-pink-200 shadow-lg rounded-b-3xl border-b-2 border-purple-300'>
