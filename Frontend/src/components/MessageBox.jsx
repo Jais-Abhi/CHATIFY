@@ -8,11 +8,13 @@ import axios from 'axios';
 import Sender from './messageBox/Sender.jsx';
 import Receiver from './messageBox/Receiver.jsx';
 import { setMessages } from '../Redux/Slices/messageSlice.js';
+import ChatSkelton from './ChatSkelton.jsx';
 
 const MessageBox = () => {
   const [frontMessage ,setFrontMessage] = useState("")
   const [message,setMessage] = useState("")
   const {messages} = useSelector((state)=>state.message)
+  const {chatLoading} = useSelector((state)=>state.message)
   const {selectedUser} = useSelector((state)=>state.user)
   const {socket} = useSelector((state)=>state.user)
   const {userData} = useSelector((state)=>state.user)
@@ -35,6 +37,8 @@ const MessageBox = () => {
   }
 
 useEffect(()=>{
+  console.log(message)
+  console.log(chatLoading)
     socket.on("newMessage",(msg)=>{
       if(msg.sender === selectedUser._id){
         dispatch(setMessages([...messages,msg]))
@@ -49,7 +53,7 @@ useEffect(()=>{
     {
       selectedUser ?
       
-      
+      chatLoading ? (<ChatSkelton/>) :
       
     
     <div style={{ height: "100dvh" }} className={`flex flex-col relative lg:w-[70%] w-full bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100`}>

@@ -4,7 +4,7 @@ const messageSlice = createSlice({
     name : "message",
     initialState :{
         messages :[],
-        chatLoading:false
+        chatLoading : true,
     },
     reducers : {
         setMessages : (state,action)=>{
