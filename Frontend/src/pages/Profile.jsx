@@ -44,9 +44,13 @@ const submitHandler = async(e)=>{
     const result = await axios.post(`${serverUrl}/api/user/profile`,formData,{withCredentials : true})
     dispatch(setUserData(result.data))
     setUpdate(false)
+    
     if(result.status === 201){
       toast.success("profile updated",{
-        position : 'top-left'
+        position : 'top-left',
+        pauseOnHover: false,
+        draggable : false,
+        theme : 'light'
       })
 
     }
