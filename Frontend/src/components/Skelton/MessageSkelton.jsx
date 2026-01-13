@@ -4,9 +4,11 @@ import Skeleton from 'react-loading-skeleton'
 const MessageSkelton = ({side}) => {
     console.log(side)
   return (
-    <div className={`${side == "left" ? "justify-start" : "justify-end"} w-full bg-blue-500  `}>
-        <Skeleton height="20px" width="30%" 
-        className={` p-4 m-4 `} />
+    <div className={`flex ${side == "left" ? "justify-start" : "justify-end"} w-full m-2 `}>
+        <div className=' p-1 mr-4 md:w-[40%] w-[60%]'>
+
+        <Skeleton className={`p-2`} />
+        </div>
     </div>
   )
 }

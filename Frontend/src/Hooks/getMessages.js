@@ -16,12 +16,12 @@ const getMessages = ()=>{
                 if(selectedUser){
                     const result = await axios.get(`${serverUrl}/api/message/get/${selectedUser._id}`,{withCredentials:true})
                     dispatch(setMessages(result.data.messages))
-                    // dispatch(setChatLoading(false))
+                    dispatch(setChatLoading(false))
                 }
             } catch (error) {
               console.log(error)  
             } finally {
-                // dispatch(setChatLoading(false))
+                dispatch(setChatLoading(false))
             }
         }
         fetchMessages()
