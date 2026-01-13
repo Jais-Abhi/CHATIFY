@@ -8,7 +8,7 @@ import axios from 'axios';
 import Sender from './messageBox/Sender.jsx';
 import Receiver from './messageBox/Receiver.jsx';
 import { setMessages } from '../Redux/Slices/messageSlice.js';
-import ChatSkelton from './ChatSkelton.jsx';
+import ChatSkelton from './Skelton/ChatSkelton.jsx';
 
 const MessageBox = () => {
   const [frontMessage ,setFrontMessage] = useState("")
