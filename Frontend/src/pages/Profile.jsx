@@ -74,7 +74,7 @@ const submitHandler = async(e)=>{
         <FaArrowLeft />
       </div>
 
-      <ToastContainer/>
+      <ToastContainer  toastClassName=" sm:!w-[320px] max-sm:!w-[50vw]"/>
 
       <div className='absolute top-[5rem] right-[5rem]' >
         <Logout/>
