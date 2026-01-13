@@ -30,6 +30,7 @@ app.use(cors({
     origin : 
     [
         "http://localhost:5173",
+        "https://chatify-5hwp.onrender.com"
 
     ],
     credentials : true

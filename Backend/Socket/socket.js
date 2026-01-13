@@ -12,6 +12,7 @@ const io = new Server(server,{
         origin : 
         [
             "http://localhost:5173",
+            "https://chatify-5hwp.onrender.com"
         ],
 
         Credential :true

@@ -5,8 +5,10 @@ import {RouterProvider} from "react-router/dom"
 import {Provider} from "react-redux"
 import store from './Redux/Stores/store.js';
 import Router from './Routes/Router.jsx';
-export const serverUrl = "http://localhost:8000"
+// export const serverUrl = "http://localhost:8000"
 // export const serverUrl = "http://10.101.13.184:8000"
+export const serverUrl = "https://chatify-backend-yy93.onrender.com"
+
 
 
 
