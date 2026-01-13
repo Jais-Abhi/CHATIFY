@@ -56,7 +56,7 @@ useEffect(()=>{
       
       
     
-    <div style={{ height: "100dvh" }} className={`flex flex-col relative lg:w-[70%] w-full bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100`}>
+    <div className={`flex flex-col h-[100dvh] lg:w-[70%] w-full bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100`}>
       <div className='flex items-center w-full pt-4 pb-4 bg-gradient-to-r from-purple-300 via-blue-200 to-pink-200 shadow-lg rounded-b-3xl border-b-2 border-purple-300'>
         <div onClick={()=>dispatch(setSelectedUser(null))} className='cursor-pointer text-[1.5rem] ml-4 text-gray-700 hover:text-purple-600 transition-colors duration-200'>
           <FaArrowLeft/>
@@ -77,10 +77,10 @@ useEffect(()=>{
         {/* message box  */}
 
         {chatLoading ? 
-        
+
             (<ChatSkelton/>) :
 
-      <div className='flex-1 overflow-y-auto will-change-transform scrollbar-hide pb-24 pt-4 md:px-4  space-y-3'>
+      <div className='flex-1 overflow-y-auto scrollbar-hide pb-24 pt-4 md:px-4  space-y-3'>
         {messages.map((msg)=>
         {
           if(msg.sender == userData._id){
@@ -94,7 +94,7 @@ useEffect(()=>{
       </div>
   }
 
-      <div className='absolute bottom-0 right-0 flex w-full h-[12%] items-center justify-center bg-gradient-to-t from-purple-100 via-blue-50 to-transparent rounded-t-3xl shadow-2xl px-4 py-4'>
+      <div className='sticky bottom-0 right-0 flex w-full h-[12%] items-center justify-center bg-gradient-to-t from-purple-100 via-blue-50 to-transparent rounded-t-3xl shadow-2xl px-4 py-4'>
         <form onSubmit={(e)=>handleSubmit(e)} className='h-full w-full flex justify-center items-center'>
           <div className='relative h-[90%] flex w-[90%] items-center justify-center'>
 
