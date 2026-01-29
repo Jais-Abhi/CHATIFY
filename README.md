@@ -2,7 +2,6 @@
 
 ![Chatify Banner](https://img.shields.io/badge/Chatify-Real--Time--Chat-blue?style=for-the-badge&logo=react)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)
-![Made with](https://img.shields.io/badge/Made%20with-❤️-red?style=flat-square)
 
 ---
 
